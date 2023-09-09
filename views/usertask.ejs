@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/users.css">
+    <style>
+      .selectHower:hover{
+  background-color: rgb(226, 240, 255);
+}
+    </style>
+</head>
+<body>
+<header class="navigation">
+	<img class="logo" src="https://ik.imagekit.io/akkldfjrf/Anika_logo.png?updatedAt=1685086335037" style="filter: brightness(900%);height: 30px !important;">
+	<nav class="main-menu">
+    <a style="font-size: 20px;"><b>SALES</b></a>
+		<a href="/">Home</a>
+		<a href="/sales" >Leads</a>
+    <!-- <a href="deals.html">Deals</a> -->
+    <a class="head1" href="/tasks">Tasks</a>
+	</nav>
+</header>
+<div class="wrappeer">
+    <div class="headeer" data-sticky-header-container>
+      <div class="sticky-header" data-sticky-header>
+        <div class="contentt">
+         <p class="labelH">
+            <b>Task</b> <span class="labelHs">-Call</span>
+          </p>
+          <div id="leadsC">
+        <button id="open-popup-modal" class="buttonH1">Close Task</button>
+          <button class="buttonH">Delete</button> 
+         <a href="/edittask"><button class="buttonH">Edit</button></div></a>
+          </div>  <hr class="hR">
+        </div></div>
+    </div>
+<main class="backgroundc">
+    <div class="sect1">
+    <div class="tab"> 
+    <span id="tabs" class="tabs"><span>Overview</span></span>
+</div></div>
+    <section class="band" >
+    <div class="item-1 ">
+        <a class="card11">
+            <table class="mainTable">
+                <tbody>
+                <tr>
+                <td class="tableLeft">Priority</td>
+                <td class="tableRight">High</td>
+                </tr>
+                <tr>
+                <td class="tableLeft">Due Date</td>
+                <td class="tableRight ">32-13-1001</td>
+                </tr>
+                <tr>
+                <td class="tableLeft">Status</td>
+                <td class="tableRight">Waiting for input</td>
+                </tr>
+                <tr>
+                <td class="tableLeft">Task Owner</td>
+                <td class="tableRight">YSS</td>
+                </tr>
+                </tbody>
+                </table>
+          <article>
+            <h1></h1>
+            <span></span>
+          </article>
+        </a>
+      </div>
+<br><br>
+      <div class="item-1 ">
+        <a class="card21"> 
+            <div class="row">
+                <div class="column">
+            <table class="mainTable1">
+                <h5 class="tableHead">Task Information</h5>
+                <tbody>
+                <tr>
+                <td class="tableLeft" style="white-space: nowrap;">Task Owner</td>
+                <td class="tableRight">YSS</td>
+                </tr>
+                <tr>
+                <td class="tableLeft">Subject</td>
+                <td class="tableRight">Send Proposal</td>
+                </tr>
+                <tr>
+                <td class="tableLeft" style="white-space: nowrap;">Due Date</td>
+                <td class="tableRight">Sep 07,2023</td>
+                </tr>
+                <tr>
+                <td class="tableLeft">Lead</td>
+                <td class="tableRight emailV">Some Guy</td>
+                </tr>
+                <tr>
+                <td class="tableLeft">Status</td>
+                <td class="tableRight">Waiting for input</td>
+                </tr>
+                <tr>
+                <td class="tableLeft">Priority</td>
+                <td class="tableRight">High</td>
+                </tr>
+                </tbody>
+                </table></div>
+                  </div>
+                    <br><br>
+                    <br><br>
+                    <div class="row">
+                        <div class="column">
+                            <h5 class="tableHead">Description Information</h5>
+                    <table class="mainTable">
+                        <tbody>
+                        <tr>
+                            <td class="tableLeft">Description</td>
+                            <td class="tableRight">--This is an example--</td>
+                            </tr>
+                            
+                    </tbody>
+                        </table></div>
+                    </div>
+          <article>
+            <h1></h1>
+            <span></span>
+          </article>
+        </a>
+      </div>
+      <div class="item-1">
+        <a class="card2">
+            <h3 class="tableNext">Notes</h3>
+            <hr class="hR" style="width: 104.3%;margin-left: -2.1%; opacity: 0.4;">
+        </a>
+      </div>
+    </section>
+
+    <div id="popup-modal" class="modal">
+      <div class="modal-content animated bounce">
+      <!-- <a class="modal-close">×</a> -->
+      <div class="modal-text">
+        Are you sure you want to mark this task as completed?
+      </div>
+      <div class="modal-footer">
+      <button class="buttonH1">Close Task</button>
+      <button class="buttonH" action="action"
+      onclick="window.history.go(-1); return false;"
+      type="submit">Cancel</button> 
+    </div>
+      </div>
+      </div></div>
+</main>
+
+</body>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="./script.js"></script>
+<script>
+
+var $stickyContainer = $('[data-sticky-header-container]');
+var $sticky = $('[data-sticky-header]');
+var marginTop = 100; 
+
+var setSticky = function() {
+  var scroll = window.pageYOffset;
+  var topPoint = $stickyContainer.offset().top;
+  
+  topPoint += marginTop; 
+    
+  if (scroll >= topPoint) {
+    $sticky.addClass('stucked');
+  } else if(scroll === 0) {
+    $sticky.removeClass('stucked');
+  }
+};
+
+var bindRaf = function(fn, throttle){
+    var isRunning, that, args;
+
+    var run = function(){
+        isRunning = false;
+        fn.apply(that, args);
+    };
+
+    return function(){
+        that = this;
+        args = arguments;
+
+        if(isRunning && throttle){return;}
+
+        isRunning = true;
+        requestAnimationFrame(run);
+    };
+}
+setTimeout(function() {
+
+  $(window)
+    .on('load.stickyHeader', setSticky.bind(this))
+    .on('scroll.stickyHeader', bindRaf(setSticky.bind(this)));
+}, 100);
+
+</script>
+<script>
+  var modal = document.getElementById('popup-modal');
+var btn = document.getElementById("open-popup-modal");
+var span = document.getElementsByClassName("modal-close")[0];
+btn.onclick = function() {
+modal.style.display = "block";
+}
+span.onclick = function() {
+modal.style.display = "none";
+}
+window.onload = function() {
+setTimeout(function() {
+modal.style.display = 'block';
+}, 3000);
+}
+window.onclick = function(event) {
+if (event.target == modal) {
+modal.style.display = "none";
+}
+}
+</script>
+<script src='https://cdn.jsdelivr.net/gh/quixtools/iconquix/iconquix.js'></script>
+<script  src="js/script.js"></script>
+<script src="js/index.js"></script>
+</html>

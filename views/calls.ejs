@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.1.2/tailwind.min.css'>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .tailTable{
+  font-size: 100px !important;
+}
+  </style>
+</head>
+
+<body>
+  <header class="navigation">
+    <img class="logo" src="https://ik.imagekit.io/akkldfjrf/Anika_logo.png?updatedAt=1685086335037"
+      style="filter: brightness(900%);height: 30px !important;">
+    <nav class="main-menu">
+      <a style="font-size: 20px;"><b>SALES</b></a>
+      <a href="/">Home</a>
+      <a href="/sales">Leads</a>
+      <a href="/tasks">Tasks</a>
+		<a href="/meetings">Meetings</a>
+		<a class="head1">Calls</a>
+    </nav>
+  </header>
+  <main class="backgroundc">
+      <div class="app-container">
+        <div class="app-content">
+          <div class="app-content-header">
+            <h1 class="app-content-headerText">Calls</h1>
+            <a href="/createcall"><button class="app-content-headerButton">Create Call</button></a>
+          </div> <br> <br>
+          <form action="/sales" method="post">
+
+        <table class="min-w-full  leading-normal">
+          <thead>
+            <tr>
+              <th 
+                class="px-5 py-3 text-9xl border-b-2 border-gray-200 bg-gray-100 text-left text-2xl font-semibold text-gray-700 uppercase tracking-wider"
+              >
+              Subject
+              </th>
+              <th
+                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-2xl font-semibold text-gray-700 uppercase tracking-wider"
+              >
+                Call Start Time
+              </th>
+              <th
+                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-2xl font-semibold text-gray-700 uppercase tracking-wider"
+              >
+                Call Agenda
+              </th>
+              <th
+                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-2xl font-semibold text-gray-700 uppercase tracking-wider"
+              >
+                Lead Name
+              </th>
+              <th
+              class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-2xl font-semibold text-gray-700 uppercase tracking-wider"
+            >
+              Call Purpose
+            </th>
+              <th
+                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-2xl font-semibold text-gray-700 uppercase tracking-wider"
+              >
+                Status
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% CallsList.forEach(call => { %>
+            <tr>
+              <td class="px-5 py-5 border-b border-gray-200 bg-white text-2xl">
+                <div class="flex">
+                  <div class="ml-3">
+                    <p class="text-gray-900 whitespace-no-wrap">
+                      <%= call.callsubject %>
+                    </p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-5 py-5 border-b border-gray-200 bg-white text-2xl">
+                <p class="text-gray-900 whitespace-no-wrap"><%= call.calltime %></p>
+              </td>
+              <td class="px-5 py-5 border-b border-gray-200 bg-white text-2xl">
+                <p class="text-gray-900 whitespace-no-wrap"><%= call.callagenda %></p>
+              </td>
+              
+              <td class="px-5 py-5 border-b border-gray-200 bg-white text-2xl">
+                <p class="text-gray-900 whitespace-no-wrap"><%= call.assignedName %></p>
+              </td>
+              
+              <td class="px-5 py-5 border-b border-gray-200 bg-white text-2xl">
+                <p class="text-gray-900 whitespace-no-wrap"><%= call.callpurpose %></p>
+              </td>
+              <td class="px-5 py-5 border-b border-gray-200 bg-white text-2xl">
+                <span
+                  class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
+                >
+                  <span
+                    aria-hidden
+                    class="absolute inset-0 bg-green-200 opacity-50 rounded-full"
+                  ></span>
+                  <span class="relative">Completed</span>
+                </span>
+              </td>
+            </tr>
+            <%})%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div></div>
+        </div>
+    </form>
+  </main>
+</body>
+<script src="js/index.js"></script>
+
+</html>

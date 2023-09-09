@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/create.css">
+   
+    <style type="text/css">
+      .flex-container {
+  display: flex;
+}
+
+.flex-child {
+  flex: 1;
+}  
+
+.flex-child:first-child {
+  margin-right: 200px;
+} 
+    
+  </style>
+
+</head>
+<body>
+<header class="navigation">
+	<img class="logo" src="https://ik.imagekit.io/akkldfjrf/Anika_logo.png?updatedAt=1685086335037" style="filter: brightness(900%);height: 30px !important;">
+	<nav class="main-menu">
+		<a style="font-size: 20px;"><b>SALES</b></a>
+		<a href="/">Home</a>
+		<a href="/sales">Leads</a>
+    <!-- <a href="deals.html">Deals</a> -->
+    <a href="/tasks">Tasks</a>
+		<a href="/meetings">Meetings</a>
+		<a href="/calls" class="head1">Calls</a>
+	</nav>
+</header>
+<form action="/createcall" method="post">
+<div class="wrappeer">
+    <div class="headeer" data-sticky-header-container>
+      <div class="sticky-header" data-sticky-header>
+        <div class="contentt">
+         <p class="labelH">
+            <b>Schedule a Call</b>
+          </p>
+          <div id="leadsC">
+          <button class="buttonH"  action="action"
+          onclick="window.history.go(-1); return false;"
+          type="submit">Cancel</button> 
+          <button class="buttonH1">Schedule</button></div>
+          </div>  <hr class="hR">
+        </div></div>
+    </div>
+  
+
+<main>
+ 
+    <br><br>
+    <section class="leads">
+    <h4 class="headH4">Call Information</h4>
+        <div class="form-inline">
+        <div>
+            <label for="Email"> Subject</label>
+            <input id="Email" name="callsubject" type="text" autofocus />
+          </div>
+          </div>
+          <div class="form-inline">
+            <div>
+                <label for="Mobile">Call Start Time</label>
+                <input id="Mobile" name="calltime" type="datetime-local" autofocus />
+              </div></div>
+          <div class="form-inline">
+                <div>
+                  <label for="Lead">Lead</label>
+                  <select name="leadname" id="Lead">
+                    <option value="" selected disabled>--select--</option>
+              <% leads.forEach(function(lead) { %>
+              <option value="<%= lead._id %>"><%= lead.firstname %></option>
+              <% }); %>
+                  </select>
+                </div></div>
+    </section>
+      <br><br>
+      <section class="leads">
+        <h4 class="headH4">Purpose </h4>
+        <div class="form-inline">
+          <div>
+              <label for="Email"> Call Purpose</label>
+              <input id="Email" name="callpurpose" type="text" autofocus />
+            </div>
+            </div>
+            <div class="form-inline">
+              <div>
+                  <label for="Email"> Call Agenda</label>
+                  <input id="Email" name="callagenda" type="text" autofocus />
+                </div>
+                </div>
+      </section>
+      <br><br>
+</main>
+            
+</form>
+</body>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="./script.js"></script>
+<script>
+
+var $stickyContainer = $('[data-sticky-header-container]');
+var $sticky = $('[data-sticky-header]');
+var marginTop = 100; 
+
+var setSticky = function() {
+  var scroll = window.pageYOffset;
+  var topPoint = $stickyContainer.offset().top;
+  
+  topPoint += marginTop; 
+    
+  if (scroll >= topPoint) {
+    $sticky.addClass('stucked');
+  } else if(scroll === 0) {
+    $sticky.removeClass('stucked');
+  }
+};
+
+var bindRaf = function(fn, throttle){
+    var isRunning, that, args;
+
+    var run = function(){
+        isRunning = false;
+        fn.apply(that, args);
+    };
+
+    return function(){
+        that = this;
+        args = arguments;
+
+        if(isRunning && throttle){return;}
+
+        isRunning = true;
+        requestAnimationFrame(run);
+    };
+}
+setTimeout(function() {
+
+  $(window)
+    .on('load.stickyHeader', setSticky.bind(this))
+    .on('scroll.stickyHeader', bindRaf(setSticky.bind(this)));
+}, 100);
+
+</script>
+
+<script src="js/index.js"></script>
+</html>

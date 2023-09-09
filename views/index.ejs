@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.1.2/tailwind.min.css'>
+</head>
+
+<body>
+	<header class="navigation">
+		<img class="logo" src="https://ik.imagekit.io/akkldfjrf/Anika_logo.png?updatedAt=1685086335037"
+			style="filter: brightness(900%);height: 30px !important;">
+		<nav class="main-menu">
+			<a style="font-size: 20px;"><b>SALES</b></a>
+			<a class="head1">Home</a>
+			<a href="/sales">Leads</a>
+			<a href="/tasks">Tasks</a>
+			<a href="/meetings">Meetings</a>
+			<a href="/calls">Calls</a>
+		</nav>
+	</header>
+	<form action="/" method="post">
+
+		<main class="backgroundc">
+			<div class="wrapper">
+				<div class="cards_wrap">
+					<div class="card_item">
+						<div class="card_inner">
+							<div class="card_top">
+								<h4 class="card_heading">My Open Tasks </h4><br>
+								<div class="container mx-auto ">
+									<div class="py-0">
+										<div class="overflow-x-auto">
+											<div
+												class="block w-full overflow-x-auto shadow-md rounded-lg overflow-hidden">
+												<table class="table-auto overflow-scroll w-full">
+													<thead>
+														<tr>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Subject
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Due Date
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Status
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Priority
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Contact Name
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Lead Owner
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Status
+															</th>
+														</tr>
+													</thead>
+													<tbody>
+														<% TasksList.forEach(task => { %>
+														<tr>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																<div class="flex">
+																	<div class="ml-3">
+																		<p class="text-gray-900 whitespace-no-wrap">
+																			<%= task.tasksubject %>
+																		</p>
+																	</div>
+																</div>
+															</td>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= task.duedate %></p>
+															</td>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= task.status %>
+																</p>
+															</td>
+
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= task.priority %></p>
+															</td>
+
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= task.assignedName %></p>
+															</td>
+
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= task.taskowner %></p>
+															</td>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																<span
+																	class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+																	<span aria-hidden
+																		class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+																	<span class="relative">Completed</span>
+																</span>
+															</td>
+														</tr>
+														<%})%>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="card_bottom">
+								<div class="card_category">
+									<img class="imagec"
+										src="https://ik.imagekit.io/7oaqyvwnm/card.png?updatedAt=1693996133205" alt="">
+									<p class="imagetext">No Tasks found.</p>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="card_item">
+						<div class="card_inner">
+							<div class="card_top">
+								<h4 class="card_heading">My Meetings </h4><br>
+								<div class="container mx-auto ">
+									<div class="py-0">
+										<div class="overflow-x-auto">
+											<div
+												class="block w-full overflow-x-auto shadow-md rounded-lg overflow-hidden">
+												<table class="table-auto overflow-scroll w-full">
+													<thead>
+														<tr>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Meeting Subject
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																From Date
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																To Date
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Lead Name
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Description
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Status
+															</th>
+														</tr>
+													</thead>
+													<tbody>
+														<% MeetingsList.forEach(meeting => { %>
+														<tr>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																<div class="flex">
+																	<div class="ml-3">
+																		<p class="text-gray-900 whitespace-no-wrap">
+																			<%= meeting.meetingsubject %>
+																		</p>
+																	</div>
+																</div>
+															</td>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= meeting.fromdate %></p>
+															</td>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= meeting.todate %>
+																</p>
+															</td>
+
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= meeting.assignedName %></p>
+															</td>
+
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= meeting.description %></p>
+															</td>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																<span
+																	class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+																	<span aria-hidden
+																		class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+																	<span class="relative">Completed</span>
+																</span>
+															</td>
+														</tr>
+														<%})%>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="card_bottom">
+								<div class="card_category">
+									<img class="imagec"
+										src="https://ik.imagekit.io/7oaqyvwnm/card.png?updatedAt=1693996133205" alt="">
+									<p class="imagetext">
+										No Meetings found.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card_item">
+						<div class="card_inner">
+							<div class="card_top">
+								<h4 class="card_heading">My Calls </h4><br>
+								<div class="container mx-auto ">
+									<div class="py-0">
+										<div class="overflow-x-auto">
+											<div
+												class="block w-full overflow-x-auto shadow-md rounded-lg overflow-hidden">
+												<table class="table-auto overflow-scroll w-full">
+													<thead>
+														<tr>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Subject
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Call Start Time
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Call Agenda
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Lead Name
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Call Purpose
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Status
+															</th>
+														</tr>
+													</thead>
+													<tbody>
+														<% CallsList.forEach(call => { %>
+														<tr>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																<div class="flex">
+																	
+																	<div class="ml-3">
+																		<p class="text-gray-900 whitespace-no-wrap">
+																			<%= call.callsubject %>
+																		</p>
+																	</div>
+																</div>
+															</td>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																<p class="text-gray-900 whitespace-no-wrap"><%= call.calltime %></p>
+															</td>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																<p class="text-gray-900 whitespace-no-wrap"><%= call.callagenda %></p>
+															</td>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= call.assignedName %>
+																</p>
+															</td>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																<p class="text-gray-900 whitespace-no-wrap"><%= call.callpurpose %>
+																</p>
+															</td>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																<span
+																	class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+																	<span aria-hidden
+																		class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+																	<span class="relative">Completed</span>
+																</span>
+															</td>
+														</tr>
+														<%})%>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card_bottom">
+								<div class="card_category">
+									<img class="imagec"
+										src="https://ik.imagekit.io/7oaqyvwnm/card.png?updatedAt=1693996133205" alt="">
+									<p class="imagetext">No calls found.</p>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+					<div class="card_item">
+						<div class="card_inner">
+							<div class="card_top">
+								<h4 class="card_heading">My Leads</h4>
+							</div>
+							<div class="card_bottom">
+								<div class="card_category">
+									<img class="imagec"
+										src="https://ik.imagekit.io/7oaqyvwnm/card.png?updatedAt=1693996133205" alt="">
+									<p class="imagetext">No Leads found.</p>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</form>
+	</main>
+
+</body>
+<script src="js/index.js"></script>
+
+</html>

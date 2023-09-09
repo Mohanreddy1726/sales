@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.1.2/tailwind.min.css'>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .tailTable{
+  font-size: 100px !important;
+}
+  </style>
+</head>
+
+<body>
+  <header class="navigation">
+    <img class="logo" src="https://ik.imagekit.io/akkldfjrf/Anika_logo.png?updatedAt=1685086335037"
+      style="filter: brightness(900%);height: 30px !important;">
+    <nav class="main-menu">
+      <a style="font-size: 20px;"><b>SALES</b></a>
+      <a href="/">Home</a>
+      <a class="head1">Leads</a>
+      <a href="/tasks">Tasks</a>
+		<a href="/meetings">Meetings</a>
+		<a href="/calls">Calls</a>
+    </nav>
+  </header>
+  <main class="backgroundc">
+      <div class="app-container">
+        <div class="app-content">
+          <div class="app-content-header">
+            <h1 class="app-content-headerText">Leads</h1>
+            <a href="/create"><button class="app-content-headerButton">Create Lead</button></a>
+          </div> <br><br>
+          <form action="/sales" method="post">
+
+        <table class="min-w-full  leading-normal">
+          <thead>
+            <tr>
+              <th 
+                class="px-5 py-3 text-9xl border-b-2 border-gray-200 bg-gray-100 text-left text-2xl font-semibold text-gray-700 uppercase tracking-wider"
+              >
+               Lead name
+              </th>
+              <th
+                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-2xl font-semibold text-gray-700 uppercase tracking-wider"
+              >
+                Company
+              </th>
+              <th
+                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-2xl font-semibold text-gray-700 uppercase tracking-wider"
+              >
+                Email
+              </th>
+              <th
+                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-2xl font-semibold text-gray-700 uppercase tracking-wider"
+              >
+                Phone
+              </th>
+              <th
+              class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-2xl font-semibold text-gray-700 uppercase tracking-wider"
+            >
+              Lead Source
+            </th>
+            <th
+              class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-2xl font-semibold text-gray-700 uppercase tracking-wider"
+            >
+              Lead Owner
+            </th>
+              <th
+                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-2xl font-semibold text-gray-700 uppercase tracking-wider"
+              >
+                Status
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% LeadsList.forEach(lead => { %>
+                    <tr>
+                      <input type="hidden" name="id" value="<%= lead._id %>">
+              <td class="px-5 py-5 border-b border-gray-200 bg-white text-2xl">
+                <div class="flex">
+                  <div class="ml-3">
+                    <p class="text-gray-900 whitespace-no-wrap">
+                      <a href="/userslead/<%= lead._id %>">      <%= lead.firstname %></a>
+                    </p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-5 py-5 border-b border-gray-200 bg-white text-2xl">
+                <p class="text-gray-900 whitespace-no-wrap"><%= lead.company %></p>
+              </td>
+              <td class="px-5 py-5 border-b border-gray-200 bg-white text-2xl">
+                <p class="text-gray-900 whitespace-no-wrap"><%= lead.priemail %></p>
+              </td>
+              
+              <td class="px-5 py-5 border-b border-gray-200 bg-white text-2xl">
+                <p class="text-gray-900 whitespace-no-wrap"><%= lead.phone %></p>
+              </td>
+              
+              <td class="px-5 py-5 border-b border-gray-200 bg-white text-2xl">
+                <p class="text-gray-900 whitespace-no-wrap"><%= lead.leadsource %></p>
+              </td>
+              
+              <td class="px-5 py-5 border-b border-gray-200 bg-white text-2xl">
+                <p class="text-gray-900 whitespace-no-wrap">Prabhdeep Singh Maan</p>
+              </td>
+              <td class="px-5 py-5 border-b border-gray-200 bg-white text-2xl">
+                <span
+                  class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
+                >
+                  <span
+                    aria-hidden
+                    class="absolute inset-0 bg-green-200 opacity-50 rounded-full"
+                  ></span>
+                  <span class="relative">Completed</span>
+                </span>
+              </td>
+            </tr>
+
+            <%})%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div></div>
+        </div>
+    </form>
+  </main>
+</body>
+<script src="js/index.js"></script>
+
+</html>
