@@ -1691,33 +1691,34 @@ outline: none !important;
                             </tr>
                           </thead>
                           <tbody>
+                            <% leads.tasks.forEach(function(task) { %>
                             <tr>
                               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <div class="flex">
                                   <div class="ml-3">
                                     <p class="text-gray-900 whitespace-no-wrap">
-                                      YSS
+                                    <%= task.tasksubject %>
                                     </p>
                                   </div>
                                 </div>
                               </td>
                               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">ASPL</p>
+                                <p class="text-gray-900 whitespace-no-wrap"><%= task.duedate %></p>
                               </td>
                               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">email@email.com</p>
-                              </td>
-                              
-                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">9874563210</p>
+                                <p class="text-gray-900 whitespace-no-wrap"><%= task.status %></p>
                               </td>
                               
                               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">email</p>
+                                <p class="text-gray-900 whitespace-no-wrap"><%= task.priority %></p>
                               </td>
                               
                               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">ME</p>
+                                <p class="text-gray-900 whitespace-no-wrap"><%= task.assignedName %></p>
+                              </td>
+                              
+                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <p class="text-gray-900 whitespace-no-wrap"><%= task.taskowner %></p>
                               </td>
                               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <span
@@ -1731,6 +1732,7 @@ outline: none !important;
                                 </span>
                               </td>
                             </tr>
+                            <% }); %>
                           </tbody>
                         </table>
                         <table style="display:none;" id="table2" class="min-w-full leading-normal">
@@ -1739,7 +1741,7 @@ outline: none !important;
                               <th
                                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider"
                               >
-                               Meeting Subject
+                              Meeting Subject
                               </th>
                               <th
                                 class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
@@ -1769,29 +1771,30 @@ outline: none !important;
                             </tr>
                           </thead>
                           <tbody>
+                            <% leads.meetings.forEach(function(meeting) { %>
                             <tr>
                               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <div class="flex">
                                   <div class="ml-3">
                                     <p class="text-gray-900 whitespace-no-wrap">
-                                      NONAME
+                                      <%= meeting.meetingsubject %> 
                                     </p>
                                   </div>
                                 </div>
                               </td>
                               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">ASPL</p>
+                                <p class="text-gray-900 whitespace-no-wrap"><%= meeting.fromdate %></p>
                               </td>
                               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">email@email.com</p>
-                              </td>
-                              
-                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">9874563210</p>
+                                <p class="text-gray-900 whitespace-no-wrap"><%= meeting.todate %></p>
                               </td>
                               
                               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">ME</p>
+                                <p class="text-gray-900 whitespace-no-wrap"><%= meeting.assignedName %></p>
+                              </td>
+                              
+                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <p class="text-gray-900 whitespace-no-wrap"><%= meeting.description %></p>
                               </td>
                               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <span
@@ -1805,6 +1808,7 @@ outline: none !important;
                                 </span>
                               </td>
                             </tr>
+                            <% }); %>
                           </tbody>
                         </table>
                         <table style="display:none;" id="table3" class="min-w-full leading-normal">
@@ -1838,25 +1842,26 @@ outline: none !important;
                             </tr>
                           </thead>
                           <tbody>
+                            <% leads.calls.forEach(function(call) { %>
                             <tr>
                               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <div class="flex">
                                   <div class="ml-3">
                                     <p class="text-gray-900 whitespace-no-wrap">
-                                      my
+                                      <%= call.callsubject %>
                                     </p>
                                   </div>
                                 </div>
                               </td>
                               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">ASPL</p>
+                                <p class="text-gray-900 whitespace-no-wrap"><%= call.calltime %></p>
                               </td>
                               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">email@email.com</p>
+                                <p class="text-gray-900 whitespace-no-wrap"><%= call.callagenda %></p>
                               </td>
                               
                               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">9874563210</p>
+                                <p class="text-gray-900 whitespace-no-wrap"><%= call.callpurpose %></p>
                               </td>
                               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <span
@@ -1870,6 +1875,7 @@ outline: none !important;
                                 </span>
                               </td>
                             </tr>
+                            <% }); %>
                           </tbody>
                         </table>
                       </div>
