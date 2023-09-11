@@ -1489,12 +1489,12 @@ input[type=date]:focus::-webkit-datetime-edit {
       <div class="item-1">
         <a class="card2">
             <h3 class="tableNext">Activities</h3>
-            <span id="leadsC2" style="margin-top: 10px; margin-right: 10px;"><span style="cursor: pointer;" onclick="window.location.href='/sendmail'" class="activityE"><%= tasks.tasktype %> Mail</span></span>
+            <span id="leadsC2" style="margin-top: 10px; margin-right: 10px;"><span id="btn-show" style="cursor: pointer;" class="activityE"><%= tasks.tasktype %> Mail</span></span>
             <hr class="hR" style="width: 104.3%;margin-left: -2.1%; opacity: 0.4;">
         </a>
       </div>
     </section>
-
+<!-- <a id="btn-show" class="buttonH12"> Send Email</a> -->
     <div id="popup-modal" class="modal">
       <div class="modal-content animated bounce">
       <!-- <a class="modal-close">×</a> -->
@@ -1509,6 +1509,62 @@ input[type=date]:focus::-webkit-datetime-edit {
     </div>
       </div>
       </div></div>
+      <dialog id="demo-modal" class="dialog">
+        <div class="dialog-body">
+          <div class="dialog-header">
+            <h1>Send Mail</h1>
+          </div>
+          <div class="dialog-content">
+
+            <div class="formbold-main-wrapper">
+</form>
+<form action="/email" method="post">
+  <div class="formbold-form-wrapper">
+    <form action="" method="POST">
+      <div class="formbold-mb-5">
+        <label for="name" class="formbold-form-label"> Name </label>
+        <input type="text" name="name" id="name" placeholder="Lead Name" class="formbold-form-input" />
+      </div>
+      <div class="formbold-mb-5">
+        <label for="email" class="formbold-form-label">From Email</label>
+        <input type="email" name="fromemail" id="email" placeholder="From email" class="formbold-form-input" />
+      </div>
+      <div class="formbold-mb-5">
+        <label for="email" class="formbold-form-label">To Email </label>
+        <input type="email" name="toemail" id="email"  placeholder="To email"
+          class="formbold-form-input" />
+      </div>
+      <div class="formbold-mb-5">
+        <label for="email" class="formbold-form-label">Subject </label>
+        <input type="text" name="subject" id="subject" placeholder="Subject" class="formbold-form-input" />
+      </div>
+      <div class="formbold-mb-5 formbold-pt-3">
+        <label class="formbold-form-label formbold-form-label-2">
+          Email Body Details
+        </label>
+        <div class="flex flex-wrap formbold--mx-3">
+          <textarea id="editor1" class="editor1" name="editor1" style="width:100% !important;" type="textarea"
+            placeholder=""></textarea>
+        </div>
+      </div>
+  </div>
+  </div>
+  <div class="dialog-footer text-right">
+    <button class="btn-modalshow buttonH1f" onclick="this.form.submit()" type="submit">Send</button>
+  </div>
+</form>
+</div>
+</div>
+
+</div>
+<span class="btn-close">
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 64 64">
+    <path
+      d="m16 13a1 1 0 0 0-3 3l16 16-16 16a1 1 0 0 0 3 3l16-16 16 16a1 1 0 0 0 3-3l-16-16 16-16a1 1 0 0 0-3-3l-16 16z"
+      fill="currentColor" />
+  </svg>
+</span>
+</dialog>
 </main>
 
 </body>
@@ -1579,6 +1635,56 @@ modal.style.display = "none";
 }
 }
 </script>
+<script>
+  const dialogBodyList = document.querySelectorAll('dialog.dialog .dialog-body');
+  const modalList = document.querySelectorAll('dialog.dialog');
+  modalList.forEach((item) => {
+    item.addEventListener('click', () => {
+      setCloseModal(item);
+    });
+  });
+  dialogBodyList.forEach((item) => {
+    item.addEventListener('click', () => {
+      event.stopPropagation();
+    });
+  });
+
+  const demoModal = document.getElementById('demo-modal');
+  const demoModal2 = document.getElementById('demo-modal2');
+  const btnModalShow = document.getElementById('btn-show');
+  const btnModalShow2 = document.getElementById('btn-show2');
+  const btnModalCloseList = document.querySelectorAll('.btn-close');
+  const showModalCustom = (incModal) => {
+    incModal.showModal();
+    incModal.classList.add('active');
+  };
+  const setCloseModal = (incModal) => {
+    incModal.addEventListener('transitionend', closeModal);
+    incModal.classList.remove('active');
+  };
+  const closeModal = () => {
+    event.target.removeEventListener('transitionend', closeModal);
+    event.target.close();
+  };
+  btnModalShow.addEventListener('click', () => {
+    showModalCustom(demoModal);
+  });
+  btnModalShow2.addEventListener('click', () => {
+    showModalCustom(demoModal2);
+  });
+  btnModalCloseList.forEach((item) => {
+    item.addEventListener('click', () => {
+      setCloseModal(item.parentElement);
+    });
+
+  });
+</script>
+<script src="https://cdn.ckeditor.com/4.9.1/standard/ckeditor.js"></script>
+<script>
+  CKEDITOR.replace('editor1');
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+<script src="./script.js"></script>
 <script src='https://cdn.jsdelivr.net/gh/quixtools/iconquix/iconquix.js'></script>
 <script  src="js/script.js"></script>
 <script src="js/index.js"></script>
