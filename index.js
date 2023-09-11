@@ -392,13 +392,16 @@ app.get('/', (req, res) => {
     task.find({}).then(tasks => {
         meeting.find({}).then(meetings => {
             call.find({}).then(calls => {
+                lead.find({}).then(leads => {
         res.render('index', {
             TasksList: tasks,
             MeetingsList: meetings,
-            CallsList: calls
+            CallsList: calls,
+            LeadsList: leads
         });
     });
     });
+});
     });
 });
 app.get("/", function (req, res) {
