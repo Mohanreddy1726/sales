@@ -1422,6 +1422,32 @@ outline: none !important;
     .w-full {
       width: 100%;
     }
+    .secSide{
+    display: flex;
+    margin-right: 20px;
+  }
+  .card20 {
+    height: 100.143px;
+    width: 546.429px;
+    border: 1px solid  #D7E2ED;
+    margin: 60px 0 15px 50px;
+    padding: 15px 20px 30px 20px;
+    min-height: auto;
+    min-width: 180px;
+        background: white;
+        text-decoration: none;
+        color: #444;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+        top: 0;
+        transition: all 0.1s ease-in;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius:6px;
+      }
   </style>
 </head>
 
@@ -1452,7 +1478,7 @@ outline: none !important;
 
               <div>
                 <input type="hidden" name="id" value="<%= leads._id %>">
-                <a id="btn-show" class="buttonH12"> Send Email</a>
+                <!-- <a id="btn-show" class="buttonH12"> Send Email</a> -->
 
                 <a href="/editleads/<%= leads._id %>" class="buttonH12">Edit</a>
                 <a href="/delete/<%= leads._id %>" class="buttonH12">Delete</a>
@@ -1468,7 +1494,7 @@ outline: none !important;
             <span id="tabs" class="tabs"><span>Overview</span></span>
           </div>
         </div>
-
+        <section class="secSide">
         <section class="band">
           <div class="item-1 ">
             <a class="card">
@@ -1629,7 +1655,7 @@ outline: none !important;
                   </table>
 
                 </div>
-              </div>
+              </div>  
 
               <article>
                 <h1></h1>
@@ -1639,268 +1665,152 @@ outline: none !important;
           </div>
           <div class="item-1">
             <a class="card2">
-              <h3 class="tableNext">Open Activites</h3>
+                <h3 class="tableNext">Open Tasks</h3>
+                
+                <span id="leadsC2" style="margin-top: 10px; margin-right: 10px;"><span style="cursor: pointer;" onclick="window.location.href='/createtask'" class="activityE">Create Task</span></span>
+
               <hr class="hR" style="width: 104.3%;margin-left: -2.1%; opacity: 0.4;">
-              <div class="inline-div" style="display: flex; gap: 20px; cursor: pointer;">
-                <span class="buttonBorder" onclick="openTable(1)"><h2 id="button1" class="text-2xl font-semibold leading-tight">Tasks</h2></span> 
-                <span class="buttonBorder" onclick="openTable(2)"><h2 id="button2" class="text-2xl font-semibold leading-tight">Meetings</h2></span>
-                <span class="buttonBorder" onclick="openTable(3)"><h2 id="button3" class="text-2xl font-semibold leading-tight">Calls</h2></span>
-                 </div>
-                 <div class=" container mx-auto px-4 sm:px-8">
-                  <div class="py-8">
-                    <div class="-mx-4 sm:-mx-8 overflow-x-auto">
-                      <div class="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
-                        <table style="display:none;" id="table1" class="min-w-full leading-normal">
-                          <thead>
-                            <tr>
+              <div class="card_top">
+								<div class="container mx-auto ">
+									<div class="py-0">
+										<div class="overflow-x-auto">
+											<div
+												class="block w-full overflow-x-auto shadow-md rounded-lg overflow-hidden">
+												<table class="table-auto overflow-scroll w-full" style="z-index: 10;">
+													<thead>
+														<tr>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Subject
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Due Date
+															</th>
                               <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider"
-                              >
-                               Subject
-                              </th>
-                              <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
-                              >
-                                Due Date
-                              </th>
-                              <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
-                              >
-                                Status
-                              </th>
-                              <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
-                              >
-                                Priority
-                              </th>
-                              <th
-                              class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
-                            >
-                              Contact Name
-                            </th>
-                            <th
-                              class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
-                            >
-                              Lead Owner
-                            </th>
-                              <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
-                              >
-                                Status
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <% leads.tasks.forEach(function(task) { %>
-                            <tr>
-                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <div class="flex">
-                                  <div class="ml-3">
-                                    <p class="text-gray-900 whitespace-no-wrap">
-                                    <%= task.tasksubject %>
-                                    </p>
-                                  </div>
-                                </div>
-                              </td>
-                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap"><%= task.duedate %></p>
-                              </td>
-                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap"><%= task.status %></p>
-                              </td>
-                              
-                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap"><%= task.priority %></p>
-                              </td>
-                              
-                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap"><%= task.assignedName %></p>
-                              </td>
-                              
-                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap"><%= task.taskowner %></p>
-                              </td>
-                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <span
-                                  class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
-                                >
-                                  <span
-                                    aria-hidden
-                                    class="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                                  ></span>
-                                  <span class="relative">Completed</span>
-                                </span>
-                              </td>
-                            </tr>
-                            <% }); %>
-                          </tbody>
-                        </table>
-                        <table style="display:none;" id="table2" class="min-w-full leading-normal">
-                          <thead>
-                            <tr>
-                              <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider"
-                              >
-                              Meeting Subject
-                              </th>
-                              <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
-                              >
-                                From Date
-                              </th>
-                              <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
-                              >
-                                To Date
-                              </th>
-                              <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
-                              >
-                                Lead Name
-                              </th>
-                              <th
-                              class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
-                            >
-                              Description
-                            </th>
-                              <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
-                              >
-                                Status
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <% leads.meetings.forEach(function(meeting) { %>
-                            <tr>
-                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <div class="flex">
-                                  <div class="ml-3">
-                                    <p class="text-gray-900 whitespace-no-wrap">
-                                      <%= meeting.meetingsubject %> 
-                                    </p>
-                                  </div>
-                                </div>
-                              </td>
-                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap"><%= meeting.fromdate %></p>
-                              </td>
-                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap"><%= meeting.todate %></p>
-                              </td>
-                              
-                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap"><%= meeting.assignedName %></p>
-                              </td>
-                              
-                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap"><%= meeting.description %></p>
-                              </td>
-                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <span
-                                  class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
-                                >
-                                  <span
-                                    aria-hidden
-                                    class="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                                  ></span>
-                                  <span class="relative">Completed</span>
-                                </span>
-                              </td>
-                            </tr>
-                            <% }); %>
-                          </tbody>
-                        </table>
-                        <table style="display:none;" id="table3" class="min-w-full leading-normal">
-                          <thead>
-                            <tr>
-                              <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider"
-                              >
-                               Subject
-                              </th>
-                              <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
-                              >
-                                Call Start time
-                              </th>
-                              <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
-                              >
-                                Call Agenda
-                              </th>
-                              <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
-                              >
-                                Call Purpose
-                              </th>
-                              <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
-                              >
-                                Status
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <% leads.calls.forEach(function(call) { %>
-                            <tr>
-                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <div class="flex">
-                                  <div class="ml-3">
-                                    <p class="text-gray-900 whitespace-no-wrap">
-                                      <%= call.callsubject %>
-                                    </p>
-                                  </div>
-                                </div>
-                              </td>
-                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap"><%= call.calltime %></p>
-                              </td>
-                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap"><%= call.callagenda %></p>
-                              </td>
-                              
-                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap"><%= call.callpurpose %></p>
-                              </td>
-                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <span
-                                  class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
-                                >
-                                  <span
-                                    aria-hidden
-                                    class="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                                  ></span>
-                                  <span class="relative">Completed</span>
-                                </span>
-                              </td>
-                            </tr>
-                            <% }); %>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>  
-                  </div>
-                </div>
-            </a>
-          </div>
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Task Type
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Status
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Priority
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Contact Name
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Lead Owner
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Status
+															</th>
+														</tr>
+													</thead>
+													<tbody>
+														<% leads.tasks.forEach(function(task) { %>
+                              <input type="hidden" name="id" value="<%= task._id %>" id="">
+                              <tr style="cursor: pointer;" class="clickable-row"  data-href='/usertask/<%= task._id %>'>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
+																<div class="flex">
+																	<div class="ml-3">
+																		<p class="text-gray-900 whitespace-no-wrap">
+																			<%= task.tasksubject %>
+																		</p>
+																	</div>
+																</div>
+															</td>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= task.duedate %></p>
+															</td>
+                              <td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= task.tasktype %></p>
+															</td>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= task.status %>
+																</p>
+															</td>
 
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= task.priority %></p>
+															</td>
 
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= task.assignedName %></p>
+															</td>
 
-          <div class="item-1">
-            <a class="card2">
-              <h3 class="tableNext">Closed Activites</h3>
-              <hr class="hR" style="width: 104.3%;margin-left: -2.1%;opacity: 0.4;">
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= task.taskowner %></p>
+															</td>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-xl">
+																<span
+																	class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+																	<span aria-hidden
+																		class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+																	<span class="relative">Completed</span>
+																</span>
+															</td>
+														</tr>
+														<%})%>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+              
             </a>
           </div>
           <div class="item-1">
             <a class="card2">
-              <h3 class="tableNext">Emails</h3>
-              <span id="leadsC2"><button class="activityE">Compose Email</button></span>
+              <h3 class="tableNext">Closed Tasks</h3>
               <hr class="hR" style="width: 104.3%;margin-left: -2.1%;opacity: 0.4;">
             </a>
           </div>
         </section>
+        <section class="secSide">
+          <div class="item-1">
+            <a class="card20">
+              <h3 class="tableNext">Timeline</h3>
+              <hr class="hR" style="width: 104.3%;margin-left: -2.1%;opacity: 0.4;"><br>
+              <hr>
+              <table class="mainTable">
+                <tbody>
+                  <% leads.tasks.forEach(function(task) { %>
+                  <tr style="border-bottom:1px solid black;">
+                    <td style="margin:20px;" class="tableRight">Task Added -<span class="emailV"> <%= task.tasktype %></span><br>
+                      by <%= task.taskowner  %> 
+                    </td>
+                  </tr>
+                  <%})%>
+                </tbody>
+              </table>
+            </a>
+          </div>
+          
+        </section>
+      </section>
 
         <dialog id="demo-modal" class="dialog">
           <div class="dialog-body">
@@ -1931,7 +1841,6 @@ outline: none !important;
           <label for="email" class="formbold-form-label">Subject </label>
           <input type="text" name="subject" id="subject" placeholder="Subject" class="formbold-form-input" />
         </div>
-
         <div class="formbold-mb-5 formbold-pt-3">
           <label class="formbold-form-label formbold-form-label-2">
             Email Body Details
@@ -1941,8 +1850,6 @@ outline: none !important;
               placeholder=""></textarea>
           </div>
         </div>
-
-
     </div>
     </div>
     <div class="dialog-footer text-right">
@@ -1950,7 +1857,6 @@ outline: none !important;
     </div>
   </form>
   </div>
-
   </div>
 
   </div>
@@ -2013,6 +1919,14 @@ outline: none !important;
         .on('load.stickyHeader', setSticky.bind(this))
         .on('scroll.stickyHeader', bindRaf(setSticky.bind(this)));
     }, 100);
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    jQuery(document).ready(function($) {
+      $(".clickable-row").click(function() {
+          window.location = $(this).data("href");
+      });
+  });
   </script>
   <script>
     const dialogBodyList = document.querySelectorAll('dialog.dialog .dialog-body');

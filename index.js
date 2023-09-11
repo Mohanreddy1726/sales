@@ -46,6 +46,7 @@ const leadSchema = {
         taskowner: String,
         tasksubject: String,
         duedate: String,
+        tasktype: String,
         assignedName: String,
         status: String,
         priority: String,
@@ -110,10 +111,9 @@ app.get('/userslead/:id', async function (req, res) {
             // Handle the case where the document is not found
             return res.status(404).send('Document not found');
         }
-
         // Render the template with the retrieved data
         res.render('userslead', {
-            leads: data
+            leads: data,
         });
     } catch (err) {
         // Handle any errors that occur during the operation
@@ -121,7 +121,13 @@ app.get('/userslead/:id', async function (req, res) {
         res.status(500).send('Internal Server Error');
     }
 });
-
+app.get('/userlead', (req, res) => {
+    task.find({}).then(tasks => {
+        res.render('userlead', {
+            
+        });
+    });
+});
 app.get('/editleads/:id', async function (req, res) {
     try {
         const id = req.params.id;
@@ -150,6 +156,27 @@ app.get('/delete/:id', function (req, res) {
     del.exec({}).then(leads => {
         res.send('<script>alert("Lead Deleted successfully!"); window.location.href = "/sales";</script>');
     });
+});
+
+app.get('/usertask/:id', async function (req, res) {
+    try {
+        const id = req.params.id;
+        // Use Mongoose to find the document by ID and await the result
+        const data = await task.findById(id);
+
+        if (!data) {
+            // Handle the case where the document is not found
+            return res.status(404).send('Document not found');
+        }
+        // Render the template with the retrieved data
+        res.render('usertask', {
+            tasks: data,
+        });
+    } catch (err) {
+        // Handle any errors that occur during the operation
+        console.error(err);
+        res.status(500).send('Internal Server Error');
+    }
 });
 app.post('/editleads', function (req, res, next) {
     var id = req.body.check;
@@ -213,6 +240,7 @@ const taskSchema = new mongoose.Schema({
     taskowner: String,
     tasksubject: String,
     duedate: String,
+    tasktype: String,
     assignedName: String,
     leadname: {
         type: mongoose.Schema.Types.ObjectId,
@@ -229,6 +257,7 @@ app.post('/createtask', async (req, res) => {
         tasksubject,
         duedate,
         leadname,
+        tasktype,
         status,
         priority,
         description
@@ -239,6 +268,7 @@ app.post('/createtask', async (req, res) => {
         taskowner,
         tasksubject,
         duedate,
+        tasktype,
         assignedName: assignedName,
         status,
         priority,

@@ -73,7 +73,7 @@
 														<% TasksList.forEach(task => { %>
 														<tr>
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<div class="flex">
 																	<div class="ml-3">
 																		<p class="text-gray-900 whitespace-no-wrap">
@@ -83,36 +83,36 @@
 																</div>
 															</td>
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<p class="text-gray-900 whitespace-no-wrap">
 																	<%= task.duedate %></p>
 															</td>
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<p class="text-gray-900 whitespace-no-wrap">
 																	<%= task.status %>
 																</p>
 															</td>
 
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<p class="text-gray-900 whitespace-no-wrap">
 																	<%= task.priority %></p>
 															</td>
 
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<p class="text-gray-900 whitespace-no-wrap">
 																	<%= task.assignedName %></p>
 															</td>
 
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<p class="text-gray-900 whitespace-no-wrap">
 																	<%= task.taskowner %></p>
 															</td>
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-xl">
 																<span
 																	class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
 																	<span aria-hidden
@@ -182,7 +182,7 @@
 														<% MeetingsList.forEach(meeting => { %>
 														<tr>
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<div class="flex">
 																	<div class="ml-3">
 																		<p class="text-gray-900 whitespace-no-wrap">
@@ -192,30 +192,30 @@
 																</div>
 															</td>
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<p class="text-gray-900 whitespace-no-wrap">
 																	<%= meeting.fromdate %></p>
 															</td>
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<p class="text-gray-900 whitespace-no-wrap">
 																	<%= meeting.todate %>
 																</p>
 															</td>
 
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<p class="text-gray-900 whitespace-no-wrap">
 																	<%= meeting.assignedName %></p>
 															</td>
 
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<p class="text-gray-900 whitespace-no-wrap">
 																	<%= meeting.description %></p>
 															</td>
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<span
 																	class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
 																	<span aria-hidden
@@ -285,7 +285,7 @@
 														<% CallsList.forEach(call => { %>
 														<tr>
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<div class="flex">
 																	
 																	<div class="ml-3">
@@ -296,26 +296,26 @@
 																</div>
 															</td>
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<p class="text-gray-900 whitespace-no-wrap"><%= call.calltime %></p>
 															</td>
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<p class="text-gray-900 whitespace-no-wrap"><%= call.callagenda %></p>
 															</td>
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<p class="text-gray-900 whitespace-no-wrap">
 																	<%= call.assignedName %>
 																</p>
 															</td>
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<p class="text-gray-900 whitespace-no-wrap"><%= call.callpurpose %>
 																</p>
 															</td>
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<span
 																	class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
 																	<span aria-hidden
@@ -385,7 +385,7 @@
 														<% LeadsList.forEach(lead => { %>
 														<tr>
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<div class="flex">
 																	
 																	<div class="ml-3">
@@ -396,26 +396,26 @@
 																</div>
 															</td>
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<p class="text-gray-900 whitespace-no-wrap"><%= lead.company %></p>
 															</td>
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<p class="text-gray-900 whitespace-no-wrap"><%= lead.email %></p>
 															</td>
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<p class="text-gray-900 whitespace-no-wrap">
 																	<%= lead.phone %>
 																</p>
 															</td>
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<p class="text-gray-900 whitespace-no-wrap"><%= lead.leadsource %>
 																</p>
 															</td>
 															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-m">
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
 																<p class="text-gray-900 whitespace-no-wrap">Prabhdeep Singh Maan
 																</p>
 															</td>
@@ -430,9 +430,9 @@
 								</div>
 							</div>
 							<div class="card_bottom">
-								<div class="card_category" style="z-index: -10;">
+								<div class="card_category" style="">
 									<img class="imagec"
-										src="https://ik.imagekit.io/7oaqyvwnm/card.png?updatedAt=1693996133205" alt=""  style="opacity: 50%;">
+										src="https://ik.imagekit.io/7oaqyvwnm/card.png?updatedAt=1693996133205" alt=""  style="opacity: 50%; z-index: -10;">
 									<p class="imagetext"></p>
 								</div>
 
