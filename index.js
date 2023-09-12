@@ -210,15 +210,15 @@ app.post('/email', function (req, res) {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'naradamohan1@gmail.com',
-            pass: 'dplitmsfsuytqmhy'
+            user: 'sales.anika123@gmail.com',
+            pass: 'vxujltezclillzjj'
         }
     });
     let mailOptions = {
         from: req.body.fromemail,
         to: req.body.toemail,
         subject: req.body.subject,
-        text: req.body.mailbody,
+        text: req.body.editor1,
     };
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
@@ -475,6 +475,9 @@ app.get("/usertask", function (req, res) {
 });
 app.get("/createtask", function (req, res) {
     res.render("createtask");
+});
+app.get("/demos", function (req, res) {
+    res.render("demos");
 });
 app.listen(5000, function () {
     console.log("Server is running on port 5000");
