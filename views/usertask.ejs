@@ -1521,7 +1521,7 @@ input[type=date]:focus::-webkit-datetime-edit {
 
             <div class="formbold-main-wrapper">
 </form>
-<form action="/email" method="post">
+<form id="emailForm" action="/email" method="post">
   <div class="formbold-form-wrapper">
     <form action="" method="POST">
       <div class="formbold-mb-5">
@@ -1529,9 +1529,9 @@ input[type=date]:focus::-webkit-datetime-edit {
         <input type="text" name="name" id="name" placeholder="Lead Name" class="formbold-form-input" />
       </div>
       <div class="formbold-mb-5">
-        <label for="email" class="formbold-form-label">To Email </label>
-        <input type="email" name="toemail" id="email"  placeholder="To email"
-          class="formbold-form-input" />
+        <label for="toemail" class="formbold-form-label">To Email </label>
+        <input type="email" name="toemail" id="toemail"  placeholder="To email"
+          class="formbold-form-input" required/>
       </div>
       <div class="formbold-mb-5">
         <label for="email" class="formbold-form-label">Subject </label>
@@ -1549,7 +1549,7 @@ input[type=date]:focus::-webkit-datetime-edit {
   </div>
   </div>
   <div class="dialog-footer text-right">
-    <button class="btn-modalshow buttonH1f" onclick="this.form.submit()" type="submit">Send</button>
+    <input class="btn-modalshow buttonH1f" type="submit" value="Send">
   </div>
 </form>
 </div>
@@ -1569,7 +1569,16 @@ input[type=date]:focus::-webkit-datetime-edit {
 </body>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="./script.js"></script>
 <script>
+ const emailForm = document.getElementById('emailForm');
 
+emailForm.addEventListener('submit', function(event) {
+  const toEmail = document.getElementById('toemail').value;
+
+  if (!toEmail) {
+    event.preventDefault(); // Prevent the form from submitting
+    alert('To Email is mandatory.');
+  }
+});
 var $stickyContainer = $('[data-sticky-header-container]');
 var $sticky = $('[data-sticky-header]');
 var marginTop = 100; 
