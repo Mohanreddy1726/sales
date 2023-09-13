@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/create.css">
+   
+    <style type="text/css">
+      .flex-container {
+  display: flex;
+}
+
+.flex-child {
+  flex: 1;
+}  
+
+.flex-child:first-child {
+  margin-right: 200px;
+} 
+    
+  </style>
+
+</head>
+<body>
+<header class="navigation">
+	<img class="logo" src="https://ik.imagekit.io/akkldfjrf/Anika_logo.png?updatedAt=1685086335037" style="filter: brightness(900%);height: 30px !important;">
+	<nav class="main-menu">
+		<a style="font-size: 20px;"><b>SALES</b></a>
+		<a href="/">Home</a>
+		<a href="/sales">Leads</a>
+    <!-- <a href="deals.html">Deals</a> -->
+    <a href="/tasks" class="head1">Tasks</a>
+    <a href="/meetings">Meetings</a>
+		<a href="/calls">Calls</a>
+    <a href="/demos">Demos</a>
+	</nav>
+</header>
+<form action="/createactivity" method="post">
+<div class="wrappeer">
+    <div class="headeer" data-sticky-header-container>
+      <div class="sticky-header" data-sticky-header>
+        <div class="contentt">
+         <p class="labelH">
+            <b>Create Activity</b>
+          </p>
+          <div id="leadsC">
+          <button class="buttonH"  action="action"
+          onclick="window.history.go(-1); return false;"
+          type="submit">Cancel</button> 
+          <button class="buttonH1">Save</button></div>
+          </div>  <hr class="hR">
+        </div></div>
+    </div>
+  
+
+<main>
+ 
+    <br><br>
+    <section class="leads">
+    <h4 class="headH4">Activity Information</h4>
+
+        <div class="form-inline">
+          <div>
+              <label for="Email">Activity Owner</label>
+              <input id="Email" name="taskowner" type="text" autofocus />
+            </div></div>
+        <div class="form-inline">
+        <div>
+            <label for="Email"> Activity Subject</label>
+            <input id="Email" name="tasksubject" type="text" autofocus />
+          </div>
+          </div>
+          <div class="form-inline">
+            <div>
+                <label for="Mobile">Date</label>
+                <input id="Mobile" name="duedate" type="datetime-local" autofocus />
+              </div></div>
+          <div class="form-inline">
+                <div>
+                  <label for="Lead">Lead</label>
+                  <select name="leadname" id="Lead">
+                    <option value="" selected disabled>--select--</option>
+                    <% leads.forEach(function(lead) { %>
+                      <option value="<%= lead._id %>"><%= lead.firstname %></option>
+                    <% }); %>
+                  </select>
+                </div></div>
+              
+                <div class="form-inline">
+                  <div>
+                    <label for="Lead">Activity Type</label>
+                    <select name="tasktype" id="Lead">
+                      <option value="" selected disabled> -None-</option>
+                      <option value="Send Proposal"> Send Proposal</option>
+                      <option value="Send Quotation"> Send Quotation</option>
+                      <option value="Inbound Phonecall"> Inbound Phonecall</option>
+                      <option value="Outbound Phonecall"> Outbound Phonecall</option>
+                      <option value="Request Demo"> Request Demo</option>
+                      <option value="Meeting"> Meeting</option>
+                      <option value="Followup Email"> Followup Email</option>
+                    </select>
+                  </div></div>
+                <div class="form-inline ">
+                    <div>
+                    <label for="Lead">Status</label>
+               
+                  <select name="status" id="Lead">
+                    <option value="" selected disabled> -None-</option>
+                    <option value="Not Started"> Not Started</option>
+                    <option value="Deffered"> Deffered</option>
+                    <option value="In Progress"> In Progress</option>
+                    <option value="Completed"> Completed</option>
+                    <option value="Waiting for Input"> Waiting For Input</option>
+                  </select></div></div>
+                <div class="form-inline">
+                  <div>
+                    <label for="Lead">Priority</label>
+                    <select name="priority" id="Lead">
+                      <option value="" selected disabled> -None-</option>
+                      <option value="High"> High</option>
+                      <option value="Highest"> Highest</option>
+                      <option value="Low"> Low</option>
+                      <option value="Lowest"> Lowest</option>
+                      <option value="Normal"> Normal</option>
+                    </select>
+                  </div></div>
+     
+    </section>
+      <br><br>
+      <section class="leads">
+        <h4 class="headH4">Description Information</h4>
+        <div class="form-inline">
+          <div>
+            <label for="name">Description</label>
+            <textarea cols="100" rows="4" id="name" name="description" type="text" autofocus></textarea>
+          </div>
+          </div>
+      </section><br><br>
+</main>
+            
+</form>
+</body>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="./script.js"></script>
+<script>
+
+var $stickyContainer = $('[data-sticky-header-container]');
+var $sticky = $('[data-sticky-header]');
+var marginTop = 100; 
+
+var setSticky = function() {
+  var scroll = window.pageYOffset;
+  var topPoint = $stickyContainer.offset().top;
+  
+  topPoint += marginTop; 
+    
+  if (scroll >= topPoint) {
+    $sticky.addClass('stucked');
+  } else if(scroll === 0) {
+    $sticky.removeClass('stucked');
+  }
+};
+
+var bindRaf = function(fn, throttle){
+    var isRunning, that, args;
+
+    var run = function(){
+        isRunning = false;
+        fn.apply(that, args);
+    };
+
+    return function(){
+        that = this;
+        args = arguments;
+
+        if(isRunning && throttle){return;}
+
+        isRunning = true;
+        requestAnimationFrame(run);
+    };
+}
+setTimeout(function() {
+
+  $(window)
+    .on('load.stickyHeader', setSticky.bind(this))
+    .on('scroll.stickyHeader', bindRaf(setSticky.bind(this)));
+}, 100);
+
+</script>
+
+<script src="js/index.js"></script>
+</html>

@@ -43,6 +43,8 @@ const leadSchema = {
     country: String,
     description: String,
     tasks: [{
+        date: String,
+        time: String,
         taskowner: String,
         tasksubject: String,
         duedate: String,
@@ -65,6 +67,18 @@ const leadSchema = {
         callpurpose: String,
         assignedName: String,
         callagenda: String,
+    }],
+    activities: [{
+        date: String,
+        time: String,
+        taskowner: String,
+        tasksubject: String,
+        duedate: String,
+        tasktype: String,
+        assignedName: String,
+        status: String,
+        priority: String,
+        description: String,
     }],
 }
 const lead = mongoose.model('lead', leadSchema);
@@ -102,6 +116,7 @@ app.get('/sales', (req, res) => {
     });
 });
 app.get('/userslead/:id', async function (req, res) {
+
     try {
         const id = req.params.id;
         // Use Mongoose to find the document by ID and await the result
@@ -131,15 +146,12 @@ app.get('/userlead', (req, res) => {
 app.get('/editleads/:id', async function (req, res) {
     try {
         const id = req.params.id;
-
         // Use Mongoose to find the document by ID and await the result
         const data = await lead.findById(id);
-
         if (!data) {
             // Handle the case where the document is not found
             return res.status(404).send('Document not found');
         }
-
         // Render the template with the retrieved data
         res.render('editleads', {
             leads: data
@@ -163,7 +175,6 @@ app.get('/usertask/:id', async function (req, res) {
         const id = req.params.id;
         // Use Mongoose to find the document by ID and await the result
         const data = await task.findById(id);
-
         if (!data) {
             // Handle the case where the document is not found
             return res.status(404).send('Document not found');
@@ -237,6 +248,8 @@ app.get('/createtask', (req, res) => {
     });
 });
 const taskSchema = new mongoose.Schema({
+    date: String,
+    time: String,
     taskowner: String,
     tasksubject: String,
     duedate: String,
@@ -264,7 +277,12 @@ app.post('/createtask', async (req, res) => {
     } = req.body;
     const Lead = await lead.findById(leadname);
     const assignedName = `${Lead.firstname}`;
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleDateString();
+    const formattedTime = currentDate.toLocaleTimeString();
     const newTask = new task({
+        date: formattedDate,
+        time: formattedTime,
         taskowner,
         tasksubject,
         duedate,
@@ -285,7 +303,7 @@ app.post('/createtask', async (req, res) => {
             await Lead.save();
         }
 
-        res.send('<script>alert("Task Assigned Successfully!"); window.location.href = "/tasks";</script>');
+        res.send('<script>alert("Task Assigned Successfully!"); window.location.href = "/sales";</script>');
     } catch (err) {
         console.error(err);
         res.status(500).send('Internal Server Error');
@@ -294,7 +312,7 @@ app.post('/createtask', async (req, res) => {
 app.get('/tasks', (req, res) => {
     task.find({}).then(tasks => {
         res.render('tasks', {
-            TasksList: tasks
+            TasksList: tasks,
         });
     });
 });
@@ -434,6 +452,76 @@ app.get('/', (req, res) => {
 });
     });
 });
+
+const activitySchema = new mongoose.Schema({
+    date: String,
+    time: String,
+    taskowner: String,
+    tasksubject: String,
+    duedate: String,
+    tasktype: String,
+    assignedName: String,
+    leadname: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'lead',
+    },
+    status: String,
+    priority: String,
+    description: String,
+});
+const activity = mongoose.model('activity', activitySchema);
+app.post('/createactivity', async (req, res) => {
+    const {
+        taskowner,
+        tasksubject,
+        duedate,
+        leadname,
+        tasktype,
+        status,
+        priority,
+        description
+    } = req.body;
+    const Lead = await lead.findById(leadname);
+    const assignedName = `${Lead.firstname}`;
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleDateString();
+    const formattedTime = currentDate.toLocaleTimeString();
+    const newActivity = new activity({
+        date: formattedDate,
+        time: formattedTime,
+        taskowner,
+        tasksubject,
+        duedate,
+        tasktype,
+        assignedName: assignedName,
+        status,
+        priority,
+        description
+    });
+    try {
+        // Save the task
+        await newActivity.save();
+
+        // Update the assigned employee with the task
+        const Lead = await lead.findById(leadname);
+        if (Lead) {
+            Lead.activities.push(newActivity);
+            await Lead.save();
+        }
+
+        res.send('<script>alert("Activity Assigned Successfully!"); window.location.href = "/sales";</script>');
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Internal Server Error');
+    }
+});
+app.get('/createactivity', (req, res) => {
+    lead.find({}).then(leads => {
+        res.render('createactivity', {
+            leads
+        });
+    });
+});
 app.get("/", function (req, res) {
     res.render("index");
 });
@@ -478,6 +566,9 @@ app.get("/createtask", function (req, res) {
 });
 app.get("/demos", function (req, res) {
     res.render("demos");
+});
+app.get("/createactivity", function (req, res) {
+    res.render("createactivity");
 });
 app.listen(5000, function () {
     console.log("Server is running on port 5000");

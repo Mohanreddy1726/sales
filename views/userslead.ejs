@@ -1708,10 +1708,7 @@ outline: none !important;
 																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
 																Lead Owner
 															</th>
-															<th
-																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
-																Status
-															</th>
+															
 														</tr>
 													</thead>
 													<tbody>
@@ -1762,15 +1759,7 @@ outline: none !important;
 																<p class="text-gray-900 whitespace-no-wrap">
 																	<%= task.taskowner %></p>
 															</td>
-															<td
-																class="px-5 py-5 border-b border-gray-200 bg-white text-xl">
-																<span
-																	class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-																	<span aria-hidden
-																		class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-																	<span class="relative">Completed</span>
-																</span>
-															</td>
+															
 														</tr>
 														<%})%>
 													</tbody>
@@ -1789,7 +1778,115 @@ outline: none !important;
               <hr class="hR" style="width: 104.3%;margin-left: -2.1%;opacity: 0.4;">
             </a>
           </div>
+          <div class="item-1">
+            <a class="card2">
+                <h3 class="tableNext">Activities</h3>
+                
+                <span id="leadsC2" style="margin-top: 10px; margin-right: 10px;"><span style="cursor: pointer;" onclick="window.location.href='/createactivity'" class="activityE">Create Activity</span></span>
+
+              <hr class="hR" style="width: 104.3%;margin-left: -2.1%; opacity: 0.4;">
+              <div class="card_top">
+								<div class="container mx-auto ">
+									<div class="py-0">
+										<div class="overflow-x-auto">
+											<div
+												class="block w-full overflow-x-auto shadow-md rounded-lg overflow-hidden">
+												<table class="table-auto overflow-scroll w-full" style="z-index: 10;">
+													<thead>
+														<tr>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Subject
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Date
+															</th>
+                              <th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Activity Type
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Status
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Priority
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Contact Name
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Lead Owner
+															</th>
+															
+														</tr>
+													</thead>
+													<tbody>
+														<% leads.activities.forEach(function(activity) { %>
+                              <input type="hidden" name="id" value="<%= activity._id %>" id="">
+                              <tr style="cursor: pointer;" class="clickable-row"  data-href='/usertask/<%= activity._id %>'>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
+																<div class="flex">
+																	<div class="ml-3">
+																		<p class="text-gray-900 whitespace-no-wrap">
+																			<%= activity.tasksubject %>
+																		</p>
+																	</div>
+																</div>
+															</td>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= activity.duedate %></p>
+															</td>
+                              <td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= activity.tasktype %></p>
+															</td>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= activity.status %>
+																</p>
+															</td>
+
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= activity.priority %></p>
+															</td>
+
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= activity.assignedName %></p>
+															</td>
+
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= activity.taskowner %></p>
+															</td>
+														</tr>
+														<%})%>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+              
+            </a>
+          </div>
         </section>
+
         <section class="secSide">
           <div class="item-1">
             <a class="card20">
@@ -1801,7 +1898,7 @@ outline: none !important;
                   <% leads.tasks.forEach(function(task) { %>
                   <tr style="border-bottom:1px solid black;">
                     <td style="margin:20px;" class="tableRight">Task Added -<span class="emailV"> <%= task.tasktype %></span><br>
-                      by <%= task.taskowner  %> 
+                      by <%= task.taskowner  %> on <%= task.date %> at <%= task.time %>
                     </td>
                   </tr>
                   <%})%>
