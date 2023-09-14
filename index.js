@@ -189,6 +189,25 @@ app.get('/usertask/:id', async function (req, res) {
         res.status(500).send('Internal Server Error');
     }
 });
+app.get('/useractivity/:id', async function (req, res) {
+    try {
+        const id = req.params.id;
+        // Use Mongoose to find the document by ID and await the result
+        const data = await activity.findById(id);
+        if (!data) {
+            // Handle the case where the document is not found
+            return res.status(404).send('Document not found');
+        }
+        // Render the template with the retrieved data
+        res.render('useractivity', {
+            activities: data,
+        });
+    } catch (err) {
+        // Handle any errors that occur during the operation
+        console.error(err);
+        res.status(500).send('Internal Server Error');
+    }
+});
 app.post('/editleads', function (req, res, next) {
     var id = req.body.check;
     var update = lead.findByIdAndUpdate(id, {
@@ -592,6 +611,9 @@ app.get("/demos", function (req, res) {
 });
 app.get("/createactivity", function (req, res) {
     res.render("createactivity");
+});
+app.get("/useractivity", function (req, res) {
+    res.render("useractivity");
 });
 app.listen(5000, function () {
     console.log("Server is running on port 5000");
