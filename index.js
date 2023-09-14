@@ -240,12 +240,24 @@ app.post('/email', function (req, res) {
     });
     res.send('<script>alert("Mail Sent Successfully!"); window.location.href = "/sales";</script>');
 });
-app.get('/createtask', (req, res) => {
-    lead.find({}).then(leads => {
+app.get('/createtask/:id', async function (req, res) {
+    try {
+        const id = req.params.id;
+        // Use Mongoose to find the document by ID and await the result
+        const data = await lead.findById(id);
+        if (!data) {
+            // Handle the case where the document is not found
+            return res.status(404).send('Document not found');
+        }
+        // Render the template with the retrieved data
         res.render('createtask', {
-            leads
+            leads: data
         });
-    });
+    } catch (err) {
+        // Handle any errors that occur during the operation
+        console.error(err);
+        res.status(500).send('Internal Server Error');
+    }
 });
 const taskSchema = new mongoose.Schema({
     date: String,
@@ -264,7 +276,7 @@ const taskSchema = new mongoose.Schema({
     description: String,
 });
 const task = mongoose.model('task', taskSchema);
-app.post('/createtask', async (req, res) => {
+app.post('/taskdetails', async (req, res) => {
     const {
         taskowner,
         tasksubject,
@@ -452,7 +464,25 @@ app.get('/', (req, res) => {
 });
     });
 });
-
+app.get('/createactivity/:id', async function (req, res) {
+    try {
+        const id = req.params.id;
+        // Use Mongoose to find the document by ID and await the result
+        const data = await lead.findById(id);
+        if (!data) {
+            // Handle the case where the document is not found
+            return res.status(404).send('Document not found');
+        }
+        // Render the template with the retrieved data
+        res.render('createactivity', {
+            leads: data
+        });
+    } catch (err) {
+        // Handle any errors that occur during the operation
+        console.error(err);
+        res.status(500).send('Internal Server Error');
+    }
+});
 const activitySchema = new mongoose.Schema({
     date: String,
     time: String,
@@ -470,7 +500,7 @@ const activitySchema = new mongoose.Schema({
     description: String,
 });
 const activity = mongoose.model('activity', activitySchema);
-app.post('/createactivity', async (req, res) => {
+app.post('/activitydata', async (req, res) => {
     const {
         taskowner,
         tasksubject,
@@ -514,13 +544,6 @@ app.post('/createactivity', async (req, res) => {
         console.error(err);
         res.status(500).send('Internal Server Error');
     }
-});
-app.get('/createactivity', (req, res) => {
-    lead.find({}).then(leads => {
-        res.render('createactivity', {
-            leads
-        });
-    });
 });
 app.get("/", function (req, res) {
     res.render("index");
