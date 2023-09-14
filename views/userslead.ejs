@@ -1426,28 +1426,6 @@ outline: none !important;
     display: flex;
     margin-right: 20px;
   }
-  .card20 {
-    height: 100.143px;
-    width: 546.429px;
-    border: 1px solid  #D7E2ED;
-    margin: 60px 0 15px 50px;
-    padding: 15px 20px 30px 20px;
-    min-height: auto;
-    min-width: 180px;
-        background: white;
-        text-decoration: none;
-        color: #444;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
-        min-height: 100%;
-        top: 0;
-        transition: all 0.1s ease-in;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius:6px;
-      }
       .popup {
 	position: fixed;
 	top: 50%;
@@ -1461,6 +1439,48 @@ outline: none !important;
 	z-index: 9999;
 	display: none;
 }
+.card20 {
+    height: 900.143px;
+    width: 546.429px;
+    border: 1px solid  #D7E2ED;
+    margin: 60px 0 15px 50px;
+    padding: 15px 20px 30px 20px;
+    min-height: auto;
+    min-width: 180px;
+        background: white;
+        text-decoration: none;
+        color: #444;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        top: 0;
+        transition: all 0.1s ease-in;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius:6px;
+      }
+      .card22 {
+        height: 900.143px;
+        width: 546.429px;
+        border: 1px solid  #D7E2ED;
+        margin: 60px 0 15px 50px;
+        padding: 15px 20px 30px 20px;
+        min-height: auto;
+        min-width: 180px;
+            background: white;
+            text-decoration: none;
+            color: #444;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            top: 0;
+            transition: all 0.1s ease-in;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius:6px;
+          }
   </style>
 </head>
 
@@ -1855,9 +1875,10 @@ outline: none !important;
         </section>
 
         <section class="secSide">
+          <div>
           <div class="item-1">
             <a class="card20">
-              <h3 class="tableNext">Timeline</h3>
+              <h3 class="tableNext">Task Timeline</h3>
               <hr class="hR" style="width: 104.3%;margin-left: -2.1%;opacity: 0.4;"><br>
               <hr>
               <table class="mainTable">
@@ -1865,7 +1886,7 @@ outline: none !important;
                   <% leads.tasks.forEach(function(task) { %>
                   <tr style="border-bottom:1px solid black;">
                     <td style="margin:20px;" class="tableRight">Task Added -<span class="emailV"> <%= task.tasktype %></span><br>
-                      by <%= task.taskowner  %> on <%= task.date %> at <%= task.time %>
+                      by <%= task.taskowner  %> on <%= task.date %>
                     </td>
                   </tr>
                   <%})%>
@@ -1873,7 +1894,25 @@ outline: none !important;
               </table>
             </a>
           </div>
-          
+            <div class="item-1">
+          <a class="card22">
+            <h3 class="tableNext">Activity Timeline</h3>
+            <hr class="hR" style="width: 104.3%;margin-left: -2.1%;opacity: 0.4;"><br>
+            <hr>
+            <table class="mainTable">
+              <tbody>
+                <% leads.activities.forEach(function(activity) { %>
+                <tr style="border-bottom:1px solid black;">
+                  <td style="margin:20px;" class="tableRight">Avtivity Added -<span class="emailV"> <%= activity.tasktype %></span><br>
+                    by <%= activity.assignedName  %> on <%= activity.date %>
+                  </td>
+                </tr>
+                <%})%>
+              </tbody>
+            </table>
+          </a>
+        </div>
+          </div>
         </section>
       </section>
   </main>
