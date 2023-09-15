@@ -80,6 +80,17 @@ const leadSchema = {
         priority: String,
         description: String,
     }],
+    closedactivities: [{
+        taskowner: String,
+        duedate: String,
+        tasktype: String,
+        assignedName: String,
+        status: String,
+        priority: String,
+        description: String,
+        closetask: String,
+        remarks: String
+    }],
 }
 const lead = mongoose.model('lead', leadSchema);
 app.post('/create', function (req, res) {
@@ -126,10 +137,13 @@ app.get('/userslead/:id', async function (req, res) {
             // Handle the case where the document is not found
             return res.status(404).send('Document not found');
         }
+        task.find({}).then(tasks => {
         // Render the template with the retrieved data
         res.render('userslead', {
             leads: data,
+            Taskslist: tasks
         });
+    });
     } catch (err) {
         // Handle any errors that occur during the operation
         console.error(err);
@@ -139,7 +153,7 @@ app.get('/userslead/:id', async function (req, res) {
 app.get('/userlead', (req, res) => {
     task.find({}).then(tasks => {
         res.render('userlead', {
-            
+
         });
     });
 });
@@ -472,15 +486,15 @@ app.get('/', (req, res) => {
         meeting.find({}).then(meetings => {
             call.find({}).then(calls => {
                 lead.find({}).then(leads => {
-        res.render('index', {
-            TasksList: tasks,
-            MeetingsList: meetings,
-            CallsList: calls,
-            LeadsList: leads
+                    res.render('index', {
+                        TasksList: tasks,
+                        MeetingsList: meetings,
+                        CallsList: calls,
+                        LeadsList: leads
+                    });
+                });
+            });
         });
-    });
-    });
-});
     });
 });
 app.get('/createactivity/:id', async function (req, res) {
@@ -563,6 +577,81 @@ app.post('/activitydata', async (req, res) => {
         console.error(err);
         res.status(500).send('Internal Server Error');
     }
+});
+app.get('/edittask/:id', async function (req, res) {
+    try {
+        const id = req.params.id;
+        // Use Mongoose to find the document by ID and await the result
+        const data = await task.findById(id);
+        if (!data) {
+            // Handle the case where the document is not found
+            return res.status(404).send('Document not found');
+        }
+        lead.find({}).then(leads => {
+            // Render the template with the retrieved data
+            res.render('edittask', {
+                tasks: data,
+                leads
+            });
+        });
+    } catch (err) {
+        // Handle any errors that occur during the operation
+        console.error(err);
+        res.status(500).send('Internal Server Error');
+    }
+});
+const closetaskSchema = {
+    taskowner: String,
+    duedate: String,
+    assignedName: String,
+    tasktype: String,
+    status: String,
+    priority: String,
+    description: String,
+    closetask: String,
+    remarks: String
+}
+const closedtask = mongoose.model('closedtask', closetaskSchema);
+app.post('/edittask', async (req, res) => {
+    let newClosetask = new closedtask({
+        taskowner: req.body.taskowner,
+        duedate: req.body.duedate,
+        assignedName: req.body.assignedName,
+        tasktype: req.body.tasktype,
+        status: req.body.status,
+        priority: req.body.priority,
+        description: req.body.description,
+        closetask: req.body.closetask,
+        remarks: req.body.remarks
+    });
+    try {
+        if (req.body.closetask === "Close Task") {
+            newClosetask.save();
+            const leadname1 = req.body.leadname;
+            const Lead = await lead.findById(leadname1);
+            if (Lead) {
+                Lead.closedactivities.push(newClosetask);
+                await Lead.save();
+            }
+            const id = req.body.id;
+                res.send('<script>alert("Task Closed Successfully!"); window.location.href = "/sales";</script>');
+            const leadname = req.body.leadname;
+            const Lead1 = await lead.findById(leadname);
+            if (Lead1) {
+                Lead1.tasks.pull({
+                    _id: id
+                });
+                await Lead1.save();
+            }
+        } else {
+            res.send('<script>alert("Wrong Command Entered!");</script>');
+        }
+    }
+ catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+}
+
 });
 app.get("/", function (req, res) {
     res.render("index");

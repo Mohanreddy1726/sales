@@ -1796,6 +1796,99 @@ outline: none !important;
             <a class="card2">
               <h3 class="tableNext">Closed Tasks</h3>
               <hr class="hR" style="width: 104.3%;margin-left: -2.1%;opacity: 0.4;">
+              <div class="card_top">
+								<div class="container mx-auto ">
+									<div class="py-0">
+										<div class="overflow-x-auto">
+											<div
+												class="block w-full overflow-x-auto shadow-md rounded-lg overflow-hidden">
+												<table class="table-auto overflow-scroll w-full" style="z-index: 10;">
+													<thead>
+														<tr>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Due Date
+															</th>
+                              <th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Task Type
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Status
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Priority
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Contact Name
+															</th>
+															<th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Lead Owner
+															</th>
+                              <th
+																class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xl font-semibold text-gray-700 uppercase tracking-wider">
+																Remarks
+															</th>
+															
+														</tr>
+													</thead>
+													<tbody>
+														<% leads.closedactivities.forEach(function(close) { %>
+                              <input type="hidden" name="id" value="<%= close._id %>" id="">
+                              <tr style="cursor: pointer;" class="clickable-row"  data-href='/usertask/<%= close._id %>'>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= close.duedate %></p>
+															</td>
+                              <td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= close.tasktype %></p>
+															</td>
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= close.status %>
+																</p>
+															</td>
+
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= close.priority %></p>
+															</td>
+
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= close.assignedName %></p>
+															</td>
+
+															<td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= close.taskowner %></p>
+															</td>
+                              <td
+																class="px-5 py-5 border-b border-gray-200 bg-white text-l">
+																<p class="text-gray-900 whitespace-no-wrap">
+																	<%= close.remarks %></p>
+															</td>
+															
+														</tr>
+														<%})%>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
             </a>
           </div>
           <div class="item-1">
@@ -1883,7 +1976,7 @@ outline: none !important;
               <hr>
               <table class="mainTable">
                 <tbody>
-                  <% leads.tasks.forEach(function(task) { %>
+                  <% Taskslist.forEach(task => { %>
                   <tr style="border-bottom:1px solid black;">
                     <td style="margin:20px;" class="tableRight">Task Added -<span class="emailV"> <%= task.tasktype %></span><br>
                       by <%= task.taskowner  %> on <%= task.date %>

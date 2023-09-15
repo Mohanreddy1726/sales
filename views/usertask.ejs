@@ -1391,7 +1391,7 @@ input[type=date]:focus::-webkit-datetime-edit {
             <b>Task</b> <span class="labelHs">-<%= tasks.tasktype %></span>
           </p>
           <div id="leadsC">
-        <span id="open-popup-modal" class="buttonH12">Close Task</span>
+            <a href="/edittask/<%= tasks._id %>" class="buttonH12">Close Task</a>
         <input type="hidden" name="id" value="<%= tasks._id %>" id="">
         <!-- <a href="/edittask" class="buttonH12">Edit</a>
         <a href="/deletetask" class="buttonH12">Delete</a> -->

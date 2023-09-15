@@ -19,7 +19,632 @@
 .flex-child:first-child {
   margin-right: 200px;
 } 
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+body {
+  
+  background: #c1c1c153;
+ 
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #20232a;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+header {
+  padding: 8px;
+  background: #313949;
+  color: #dfdfdf;
+  text-align: center;
+}
+header span,
+header .logo > * {
+  color: #41e0fd;
+}
+header.navigation {
+  display: flex;
+
+  /* justify-content: space-between; */
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+header.navigation a {
+  font-size: 14px;
+  font-family: sans-serif;
+  font-variant: no-contextual;
+  color: #ffffff;
+  word-spacing: 0px;
+  text-decoration: none solid rgb(49,57,73);
+  padding: 10px;
+  margin: 0 5px;
+  background-color: #FFFFFF;
+  background: 0% 0%;
+}
+header.navigation a.logo {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5em;
+  margin-right: 10px;
+  
+}
+.head1{
+  cursor: pointer;
+    border-bottom: 3px solid #ffffff;
+}
+/* cards */
+
+
+.wrapper {
+  width: 100%;
+  margin: 20px auto;
+}
+
+.cards_wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cards_wrap .card_item {
+  width: 50%;
+  padding: 20px;
+  
+}
+
+.cards_wrap .card_inner {
+  border-radius: 4px;
+  background: #fff;
+  padding-bottom: 180px;
+}
+
+.cards_wrap .card_top {
+  width: 100%;
+  min-height: 225px;
+  padding: 10px;
+  padding-bottom: 0;
+}
+
+
+.cards_wrap .card_bottom .card_info .title {
+  color: #0071bc;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.cards_wrap .card_bottom {
+  padding: 15px;
+}
+
+.cards_wrap .card_bottom .card_category {
+margin-top: -40px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+  text-align: center;
+}
+
+.cards_wrap .card_bottom .card_info {
+  padding: 15px;
+  margin: 10px 0;
+  border: 1px dashed #0071bc;
+}
+
+.cards_wrap .card_bottom .card_info .title {
+  color: #0071bc;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.cards_wrap .card_bottom .card_creator {
+  text-align: center;
+}
+@media (max-width: 1024px) {
+  .cards_wrap .card_item {
+    width: 33.3%;
+  }
+}
+
+@media (max-width: 768px) {
+  .cards_wrap .card_item {
+    width: 50%;
+  }
+}
+
+@media (max-width: 528px) {
+  .cards_wrap .card_top {
+    height: auto;
+  }
+  .cards_wrap .card_item {
+    width: 100%;
+  }
+}
+
+.card_heading{
+    font-family: sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-variant: no-contextual;
+    font-weight: 545;
+    letter-spacing: normal;
+    line-height: normal;
+    text-decoration: none solid rgb(32, 33, 35);
+    text-align: left;
+    text-indent: 0px;
+    text-transform: none;
+    vertical-align: top;
+    white-space: nowrap;
+    word-spacing: 0px;
+}
+.imagec{
+  height: 110px;
+  width: 160px;
+}
+.imagetext{
+  
+    font-size: 14px;
+    font-style: normal;
+    font-variant: no-contextual;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: normal;
+    color: #8B9AB9;
+    text-decoration: none solid rgb(139, 154, 185);
+    text-align: center;
+    text-indent: 0px;
+    text-transform: none;
+    vertical-align: baseline;
+    white-space: normal;
+    word-spacing: 0px;
+}
+.circle img {
+	border-radius: 50%;	
+}
+.avatar{
+  width: 70%;
+  height: 30px;
+}
+.circle:hover {
+	transition: ease-out 0.2s;
+  border: 4px solid rgba(0,0,0,0.2);
+}
+a.circle {
+  color: transparent;
+} 
     
+.headeer,
+.sticky-header {
+  /* height: 10px; */
+  background-color: #ffffff;
+  color: rgb(18, 16, 16);
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+
+}
+
+.contentt {
+  display: flex;
+  align-items:last baseline;
+  height: 100%;
+  width: 100%;
+  padding: 1em 3em;
+  z-index: 10;
+}
+.stucked {
+  height: 100px;
+  position: fixed;
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+  animation-name: showStickyHeader;
+}
+
+
+@keyframes showStickyHeader {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+    height: 100px;
+  }
+}
+.labelH {
+	
+	font-family:  sans-serif;
+	font-size: 20px;
+	font-style: normal;
+	font-variant: no-contextual;
+	font-weight: 400;
+	letter-spacing: normal;
+	line-height: normal;
+	text-decoration: none solid rgb(32, 33, 35);
+	text-align: start;
+	text-indent: 0px;
+	text-transform: none;
+	vertical-align: middle;
+	white-space: normal;
+	word-spacing: 0px;
+
+	background-attachment: scroll;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: none;
+	background-position: 0% 0%;
+	background-repeat: repeat;
+	color: rgb(32, 33, 35);
+
+}
+.statusL{
+  position: absolute;
+  right: 205px;
+ 
+}
+button {
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 20px;
+  cursor: pointer;
+}
+
+#leadsC {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.buttonH{
+     font-family: sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: normal;
+        text-decoration: none solid rgb(49, 57, 73);
+        text-align: center;
+        text-indent: 0px;
+        text-transform: none;
+        vertical-align: baseline;
+        white-space: nowrap;
+        word-spacing: 0px;
+        background-attachment: scroll;
+        background-color: rgba(0, 0, 0, 0);
+        background-image: linear-gradient(rgb(252, 253, 255) 0%, rgb(222, 229, 241) 100%);
+        background-position: 0% 0%;
+        background-repeat: repeat;
+        color: rgb(49, 57, 73);
+        height: 31.1429px;
+        width: 87.4107px;
+        border: 0.571429px solid rgb(208, 212, 223);
+        border-top: 0.571429px solid rgb(208, 212, 223);
+        border-right: 0.571429px solid rgb(208, 212, 223);
+        border-bottom: 0.571429px solid rgb(208, 212, 223);
+        border-left: 0.571429px solid rgb(208, 212, 223);
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+        max-height: none;
+        min-height: 0px;
+        max-width: none;
+        min-width: 0px;
+}
+.buttonH1{
+        font-size: 14px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: normal;
+        text-decoration: none solid rgb(255, 255, 255);
+        text-align: center;
+        text-indent: 0px;
+        text-transform: none;
+        vertical-align: baseline;
+        white-space: nowrap;
+        word-spacing: 0px;
+        background-attachment: scroll;
+        background-color: rgba(0, 0, 0, 0);
+        background-image: linear-gradient(0deg, rgb(0, 107, 228) 0%, rgb(2, 172, 255) 100%);
+        background-position: 0% 0%;
+        background-repeat: repeat;
+        color: rgb(255, 255, 255);
+        height: 32px;
+        width: 71.3929px;
+        border: 0px none rgb(255, 255, 255);
+        border-top: 0px none rgb(255, 255, 255);
+        border-right: 0px none rgb(255, 255, 255);
+        border-bottom: 0px none rgb(255, 255, 255);
+        border-left: 0px none rgb(255, 255, 255);
+        
+        max-height: none;
+        min-height: 0px;
+        max-width: none;
+        min-width: 31px;
+        outline-offset: 0px;
+        box-sizing: border-box;
+        resize: none;
+        text-shadow: none;
+        text-overflow: clip;
+        word-wrap: normal;
+        box-shadow: rgb(0, 97, 202) 0px -2px 0px 0px inset;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+    
+}
+
+input[type=text]:focus {
+  border: 1px solid  #4C9EF7;
+  box-sizing: border-box;
+  transition: 0.5s;
+  outline: none;
+  transition: border 0.3s ease-out 0s, box-shadow 0.3s ease-out 0s;
+box-sizing: border-box;
+word-wrap: break-word;
+box-shadow: rgb(71, 150, 237) 0px 0px 6px 0px;
+}
+textarea[type=text]:focus {
+  border: 1px solid  #4C9EF7;
+  box-sizing: border-box;
+  transition: 0.5s;
+  outline: none;
+  transition: border 0.3s ease-out 0s, box-shadow 0.3s ease-out 0s;
+box-sizing: border-box;
+word-wrap: break-word;
+box-shadow: rgb(71, 150, 237) 0px 0px 6px 0px;
+}
+select option:focus {
+box-shadow: rgb(71, 150, 237) 0px 0px 6px 0px !important;
+}
+
+:focus-visible {
+  outline: 1px solid  #4C9EF7;
+  box-sizing: border-box;
+  transition: 0.3s ease-out 0s, box-shadow 0.3s ease-out 0s;
+box-sizing: border-box;
+box-shadow: rgb(71, 150, 237) 0px 0px 6px 0px !important;
+}
+.leads{
+    font-family: sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: normal;
+    display: block;
+    margin-left: 100px;
+}
+.hR{
+    border: 10px;
+    border-bottom: 1px solid  #EEEEEE  !important;
+}
+
+body{
+    background: #fff;
+}
+div {
+  margin-bottom: 10px;
+}
+label {
+  display: inline-block;
+  width: 110px;
+  color: #616E88;
+}
+input {
+  padding: 5px 10px;
+}
+.form-inline {  
+display: flex;
+flex-flow: row wrap;
+align-items: center;
+}
+
+.form-inline label {
+margin: 20px 0px 0px 0;
+}
+
+
+.form-inline input{
+vertical-align: middle;
+margin: 0px 200px 0px 0;
+padding: 10px;
+font-size: 14px;
+font-style: normal;
+font-variant: no-contextual;
+font-weight: 400;
+letter-spacing: normal;
+line-height: normal;
+text-decoration: none solid rgb(49, 57, 73);
+text-align: start;
+text-indent: 0px;
+text-transform: none;
+vertical-align: bottom;
+white-space: normal;
+word-spacing: 0px;
+background-attachment: scroll;
+background-color: rgba(0, 0, 0, 0);
+background-image: none;
+background-position: 0% 0%;
+background-repeat: repeat;
+color: #000000;
+height: 33.1429px;
+width: 368.036px;
+border: 0.571429px solid rgb(192, 198, 204);
+border-top: 0.571429px solid rgb(192, 198, 204);
+border-right: 0.571429px solid rgb(192, 198, 204);
+border-bottom: 0.571429px solid rgb(192, 198, 204);
+border-left: 0.571429px solid rgb(192, 198, 204);
+max-height: none;
+min-height: 0px;
+max-width: none;
+min-width: 0px;
+outline-offset: 0px;
+box-sizing: border-box;
+resize: none;
+text-shadow: none;
+text-overflow: clip;
+word-wrap: break-word;
+box-shadow: none;
+border-top-left-radius: 6px;
+border-top-right-radius: 6px;
+border-bottom-left-radius: 6px;
+border-bottom-right-radius: 6px;
+}
+.form-inline select{
+
+  font-size: 14px;
+  font-style: normal;
+  font-variant: no-contextual;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: normal;
+  text-decoration: none solid rgb(49, 57, 73);
+  text-align: start;
+  text-indent: 0px;
+  text-transform: none;
+  vertical-align: bottom;
+  white-space: normal;
+  word-spacing: 0px;
+  background-attachment: scroll;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: none;
+  background-position: 0% 0%;
+  background-repeat: repeat;
+  color: #000000;
+  height: 33.1429px;
+  width: 368.036px;
+  border: 0.571429px solid rgb(192, 198, 204);
+  border-top: 0.571429px solid rgb(192, 198, 204);
+  border-right: 0.571429px solid rgb(192, 198, 204);
+  border-bottom: 0.571429px solid rgb(192, 198, 204);
+  border-left: 0.571429px solid rgb(192, 198, 204);
+  max-height: none;
+  min-height: 0px;
+  max-width: none;
+  min-width: 0px;
+  outline-offset: 0px;
+  box-sizing: border-box;
+  resize: none;
+  text-shadow: none;
+  text-overflow: clip;
+  word-wrap: break-word;
+  box-shadow: none;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  }
+  .form-inline textarea{
+
+    font-size: 14px;
+    font-style: normal;
+    font-variant: no-contextual;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: normal;
+    text-decoration: none solid rgb(49, 57, 73);
+    text-align: start;
+    text-indent: 0px;
+    text-transform: none;
+    vertical-align: bottom;
+    white-space: normal;
+    word-spacing: 0px;
+    background-attachment: scroll;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: none;
+    background-position: 0% 0%;
+    background-repeat: repeat;
+    color: #000000;
+    border: 0.571429px solid rgb(192, 198, 204);
+    border-top: 0.571429px solid rgb(192, 198, 204);
+    border-right: 0.571429px solid rgb(192, 198, 204);
+    border-bottom: 0.571429px solid rgb(192, 198, 204);
+    border-left: 0.571429px solid rgb(192, 198, 204);
+    max-height: none;
+    min-height: 0px;
+    max-width: none;
+    min-width: 0px;
+    outline-offset: 0px;
+    box-sizing: border-box;
+    resize: none;
+    text-shadow: none;
+    text-overflow: clip;
+    word-wrap: break-word;
+    box-shadow: none;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    }
+.form-inline button {
+padding: 10px 20px;
+background-color: dodgerblue;
+border: 1px solid #ddd;
+color: white;
+cursor: pointer;
+}
+
+
+@media (max-width: 800px) {
+.form-inline input {
+margin: 10px 0;
+}
+
+.form-inline {
+flex-direction: column;
+align-items: stretch;
+}
+}
+.rupee-img
+{
+    position: relative;
+    left: 6px;
+    top: 2px;
+    width: 0px;
+    display: inline-block;
+   
+}
+.rupee{
+  font-size: 15px;
+  opacity: 0.5;
+}
+::placeholder {
+text-align: center;
+font-size: 15px;
+}
+.headH4{
+  margin-left:-75px;
+}
+:root {
+  --select-border: #777;
+  --select-arrow: var(--select-border);
+}
+
   </style>
 
 </head>
@@ -37,6 +662,7 @@
     <a href="/demos">Demos</a>
 	</nav>
 </header>
+<form action="/edittask" method="post">
 <div class="wrappeer">
     <div class="headeer" data-sticky-header-container>
       <div class="sticky-header" data-sticky-header>
@@ -45,76 +671,46 @@
             <b>Edit Task</b>
           </p>
           <div id="leadsC">
-          <button class="buttonH"  action="action"
-          onclick="window.history.go(-1); return false;"
-          type="submit">Cancel</button> 
-          <button class="buttonH1">Save</button></div>
+          
+          <button class="buttonH1">Close</button></div>
           </div>  <hr class="hR">
         </div></div>
     </div>
-  
-
+  <input type="hidden" name="id" value="<%= tasks._id %>">
 <main>
- 
     <br><br>
     <section class="leads">
     <h4 class="headH4">Lead Information</h4>
-    <form>
         <div class="form-inline">
           <div>
               <label for="Email">Task Owner</label>
-              <input id="Email" name="Email" type="text" autofocus />
+              <input id="Email" name="taskowner" type="text" value="<%= tasks.taskowner %>" readonly autofocus />
             </div></div>
-        <div class="form-inline">
-        <div>
-            <label for="Email"> Task Subject</label>
-            <input id="Email" name="Email" type="text" autofocus />
-          </div>
-          </div>
           <div class="form-inline">
             <div>
                 <label for="Mobile">Due Date</label>
-                <input id="Mobile" name="Mobile" type="datetime-local" autofocus />
+                <input id="Mobile" name="duedate" type="datetime-local" value="<%= tasks.duedate %>" readonly autofocus />
               </div></div>
-          <div class="form-inline">
+              <div class="form-inline">
                 <div>
-                  <label for="Lead">Lead</label>
-                  <select name="Lead" id="Lead">
-                    <option value="volvo" selected disabled> Select</option>
-                    <option value="volvo"> High</option>
-                    <option value="saab"> Highest</option>
-                    <option value="opel"> Low</option>
-                    <option value="audi"> Lowest</option>
-                    <option value="audi"> Normal</option>
-                  </select>
-                </div></div>
-              
-                <div class="form-inline ">
-                    <div>
-                    <label for="Lead">Status</label>
-               
-                  <select name="Lead" id="Lead">
-                    <option value="volvo" selected disabled> -None-</option>
-                    <option value="volvo"> Not Started</option>
-                    <option value="saab"> Deffered</option>
-                    <option value="opel"> In Progress</option>
-                    <option value="audi"> Completed</option>
-                    <option value="audi"> Waitinf For Input</option>
-                  </select></div></div>
-                <div class="form-inline">
-                  <div>
-                    <label for="Lead">Priority</label>
-                    <select name="Lead" id="Lead">
-                      <option value="volvo" selected disabled> -None-</option>
-                      <option value="volvo"> High</option>
-                      <option value="saab"> Highest</option>
-                      <option value="opel"> Low</option>
-                      <option value="audi"> Lowest</option>
-                      <option value="audi"> Normal</option>
-                    </select>
+                    <label for="Email">Lead</label>
+                    <input id="Email" name="assignedName" type="text" value="<%= tasks.assignedName %>" readonly autofocus />
                   </div></div>
-                 
-      </form>
+                  <div class="form-inline">
+                    <div>
+                        <label for="Email">Task Type</label>
+                        <input id="Email" name="tasktype" type="text" value="<%= tasks.tasktype %>" readonly autofocus />
+                      </div></div>
+                      <div class="form-inline">
+                        <div>
+                            <label for="Email">Status</label>
+                            <input id="Email" name="status" type="text" value="<%= tasks.status %>" readonly autofocus />
+                          </div></div>
+                          <div class="form-inline">
+                            <div>
+                                <label for="Email">Priority</label>
+                                <input id="Email" name="priority" type="text" value="<%= tasks.priority %>" readonly autofocus />
+                              </div></div>
     </section>
       <br><br>
       <section class="leads">
@@ -122,10 +718,37 @@
         <div class="form-inline">
           <div>
             <label for="name">Description</label>
-            <textarea cols="100" rows="4" id="name" name="username" type="text" autofocus></textarea>
+            <textarea cols="100" rows="4" id="name" name="description" type="text" readonly autofocus><%= tasks.description %></textarea>
           </div>
           </div>
       </section><br><br>
+    </section>
+    <br><br>
+    <section class="leads">
+      <h4 class="headH4">Close Task</h4>
+      <div class="form-inline">
+        <div>
+          <label for="Lead">Lead</label>
+          <select name="leadname" id="Lead">
+            <option value="" selected disabled>--select--</option>
+      <% leads.forEach(function(lead) { %>
+      <option value="<%= lead._id %>"><%= lead.firstname %></option>
+      <% }); %>
+          </select>
+        </div></div>
+      <div class="form-inline">
+      <div>
+        <label for="Email">Task</label>
+        <input id="Email" name="closetask" type="text" placeholder="Type 'Close Task' to close the task completely" autofocus />
+      </div></div>
+      <div class="form-inline">
+        <div>
+          <label for="name">Remarks</label>
+          <textarea cols="100" rows="4" id="name" name="remarks" type="text" autofocus></textarea>
+        </div>
+        </div>
+    </section><br><br>
+  </form>
 </main>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="./script.js"></script>
