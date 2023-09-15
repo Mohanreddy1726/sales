@@ -1494,8 +1494,6 @@ outline: none !important;
       <a href="/sales" class="head1">Leads</a>
       <!-- <a href="deals.html">Deals</a> -->
       <a href="/tasks">Tasks</a>
-      <a href="/meetings">Meetings</a>
-      <a href="/calls">Calls</a>
       <a href="/demos">Demos</a>
 
     </nav>
@@ -1983,6 +1981,13 @@ outline: none !important;
                     </td>
                   </tr>
                   <%})%>
+                  <% Closedlist.forEach(closedtask => { %>
+                    <tr style="border-bottom:1px solid black;">
+                      <td style="margin:20px;" class="tableRight">Task Closed -<span class="emailV"> <%= closedtask.tasktype %></span><br>
+                        by <%= closedtask.taskowner  %> on <%= closedtask.date %>
+                      </td>
+                    </tr>
+                    <%})%>
                 </tbody>
               </table>
             </a>

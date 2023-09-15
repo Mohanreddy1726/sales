@@ -138,11 +138,14 @@ app.get('/userslead/:id', async function (req, res) {
             return res.status(404).send('Document not found');
         }
         task.find({}).then(tasks => {
+            closedtask.find({}).then(closedtasks => {
         // Render the template with the retrieved data
         res.render('userslead', {
             leads: data,
-            Taskslist: tasks
+            Taskslist: tasks,
+            Closedlist: closedtasks
         });
+    });
     });
     } catch (err) {
         // Handle any errors that occur during the operation
@@ -601,6 +604,7 @@ app.get('/edittask/:id', async function (req, res) {
     }
 });
 const closetaskSchema = {
+    date: String,
     taskowner: String,
     duedate: String,
     assignedName: String,
@@ -613,7 +617,11 @@ const closetaskSchema = {
 }
 const closedtask = mongoose.model('closedtask', closetaskSchema);
 app.post('/edittask', async (req, res) => {
+    
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleDateString();
     let newClosetask = new closedtask({
+        date: formattedDate,
         taskowner: req.body.taskowner,
         duedate: req.body.duedate,
         assignedName: req.body.assignedName,
